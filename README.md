@@ -25,4 +25,4 @@ _So, I somehow managed to write the scripts and help me to be lazy_
 
 ### Done:
 
-[x] Favourite Package Installer
+- [x] Favourite Package Installer
