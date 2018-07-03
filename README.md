@@ -26,3 +26,7 @@ _So, I somehow managed to write the scripts and help me to be lazy_
 ### Done:
 
 - [x] Favourite Package Installer
+
+### Acknowledgements
+
+- [Maksudur Rahman Maateen](https://github.com/maateen) - for LEMP install script
