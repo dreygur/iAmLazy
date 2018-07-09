@@ -27,7 +27,7 @@ class Primary():
         update()
         #   Install vim and other primary packages.
         #   Installs Vim, Filezilla, Gdebi, GParted, Synaptic
-        system('sudo apt-get install vim filezilla gdebi gparted synaptic curl -y')
+        system('sudo apt-get install git-core vim filezilla gdebi gparted synaptic curl -y')
     
     def qbittorrent(self):
         #   This will install qBittorrent Stable
@@ -59,17 +59,18 @@ class Media():
         #   VLC - Video Player
         update()
         # Install VLC and VLC - Browser Plugin
-        system('sudo apt-get install vlc browser-plugin-vlc')
+        system('sudo apt-get install vlc browser-plugin-vlc -y')
 
 class Browser():
     """ This Class is for installation of the Browsers I Need """
 
     def chrome(self):
         #   Installs Google Chrome
-        system('sudo add-apt-repository "http://dl.google.com/linux/chrome/deb/ stable main" -y')
-        update()
+        system('wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb')
         # Installing Google Chrome
-        system('sudo apt install google-chrome-stable -y')
+        system('sudo gdebi google-chrome-stable_current_amd64.deb -y')
+        remove('google-chrome-stable_current_amd64.deb')
+        #update()
 
     def firefox(self):
         #   Removes Firefox-ESR and installs Firefox Quantum
@@ -87,7 +88,7 @@ class IDE():
         # Download and store GPG Key
         system('curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg')
         # Add repo to sources
-        system('sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg &&\
+        system('sudo mv -f microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg &&\
                 sudo sh -c \'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable \
                 main" > /etc/apt/sources.list.d/vscode.list\'')
         update()
@@ -121,7 +122,7 @@ class ZSH():
         # Downloads and Copies oh-my-zsh plugin
         system('sudo git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh')
         # Copy the Configuration file to Home Directory
-        system('sudo cp ' + _current_directory + '.zsrch ~/')
+        system('sudo cp ' + _current_directory + ' .zsrch ~/')
 
     def zsh_fonts(self):
         #   Installs the required pakages for oh_my_zsh
@@ -132,11 +133,12 @@ class ZSH():
         system('wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf')
         system('wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf')
         # Move the symbol font to a valid X font path. Valid font paths can be listed with "xset q" 
-        system('sudo mv PowerlineSymbols.otf ~/.local/share/fonts/')
+        system('sudo mv -f PowerlineSymbols.otf ~/.local/share/fonts/')
         # Update font Cache
         system('fc-cache -vf ~/.local/share/fonts/')
         # Install the fontconfig file
-        system('mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/')
+        system('mkdir -p ~/.config/fontconfig/conf.d/')
+        system('mv -f 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/')
 
 def get_codename():
     #   This function will get the codename of running Distro
@@ -176,8 +178,8 @@ def main():
             print('Done!\nInstalling "QBittorrent"...')
             prm.qbittorrent()
             print('QBittorrent installed.\nInstalling "Libre Office"')
-            prm.libre_office()
-            print('"Libre Office" installed.')
+            #prm.libre_office()
+            #print('"Libre Office" installed.')
         except:
             print('Sorry, Something went wrong!\nPrimary Packages Installation Failed.')
         

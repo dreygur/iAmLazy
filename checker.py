@@ -1,11 +1,10 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 """
 #   Solution Checker
 #   Author: Totul
 #   URI: https://www.facebook.com/rytotul
 """
-
 import os
 import subprocess
 import shutil
