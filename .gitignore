@@ -1,0 +1,4 @@
+bin*
+inputs/*
+src/*
+expected/*
