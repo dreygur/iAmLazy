@@ -68,7 +68,8 @@ class Browser():
         #   Installs Google Chrome
         system('wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb')
         # Installing Google Chrome
-        system('sudo gdebi google-chrome-stable_current_amd64.deb -y')
+        system('sudo dpkg -i google-chrome-stable_current_amd64.deb')
+        system('sudo apt install -f')
         remove('google-chrome-stable_current_amd64.deb')
         #update()
 
@@ -122,7 +123,7 @@ class ZSH():
         # Downloads and Copies oh-my-zsh plugin
         system('sudo git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh')
         # Copy the Configuration file to Home Directory
-        system('sudo cp ' + _current_directory + ' .zsrch ~/')
+        system('sudo cp ' + _current_directory + ' .zshrc ~/')
 
     def zsh_fonts(self):
         #   Installs the required pakages for oh_my_zsh
@@ -133,6 +134,7 @@ class ZSH():
         system('wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf')
         system('wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf')
         # Move the symbol font to a valid X font path. Valid font paths can be listed with "xset q" 
+        system('mkdir -p ~/.local/share/fonts/')
         system('sudo mv -f PowerlineSymbols.otf ~/.local/share/fonts/')
         # Update font Cache
         system('fc-cache -vf ~/.local/share/fonts/')
