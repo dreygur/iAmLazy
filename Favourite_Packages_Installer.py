@@ -23,15 +23,15 @@ class Primary():
 
     def primary(self):
         #   This will install add-apt-repository
-        system('sudo apt install python-software-properties -y')
+        system('sudo apt install software-properties-common python-software-properties -y')
         update()
         #   Install vim and other primary packages.
-        #   Installs Vim, Filezilla, Gdebi, GParted, Synaptic
-        system('sudo apt-get install git-core vim filezilla gdebi gparted synaptic curl -y')
+        #   Installs Vim, Gdebi, GParted, Synaptic
+        system('sudo apt-get install git-core vim gdebi gparted synaptic curl php5-curl -y')
     
     def qbittorrent(self):
         #   This will install qBittorrent Stable
-        system('sudo add-apt-repository ppa:qbittorrent-team/qbittorrent-stable')
+        system('sudo add-apt-repository ppa:qbittorrent-team/qbittorrent-stable -y')
         update()
         system('sudo apt-get install qbittorrent -y')
 
