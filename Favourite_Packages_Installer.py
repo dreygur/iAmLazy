@@ -27,7 +27,7 @@ class Primary():
         update()
         #   Install vim and other primary packages.
         #   Installs Vim, Gdebi, GParted, Synaptic
-        system('sudo apt-get install git-core vim gdebi gparted synaptic curl php5-curl -y')
+        system('sudo apt-get install git git-core vim gdebi gparted synaptic curl php5-curl -y')
     
     def qbittorrent(self):
         #   This will install qBittorrent Stable
