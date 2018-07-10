@@ -121,14 +121,14 @@ class ZSH():
         #   Installs and customize zsh shell
         _current_directory = getcwd()
         # Downloads and Copies oh-my-zsh plugin
-        system('sudo git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh')
+        system('git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh')
         # Copy the Configuration file to Home Directory
-        system('sudo cp ' + _current_directory + ' .zshrc ~/')
+        system('sudo cp ' + _current_directory + '/.zshrc ~/')
 
     def zsh_fonts(self):
         #   Installs the required pakages for oh_my_zsh
         # Installs powerlevel9k theme
-        system('sudo git clone https://github.com/bhilburn/powerlevel9k.git \
+        system('git clone https://github.com/bhilburn/powerlevel9k.git \
                 ~/.oh-my-zsh/custom/themes/powerlevel9k')
         # download and install powerline font and font configuration
         system('wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf')
