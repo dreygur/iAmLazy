@@ -176,7 +176,6 @@ def main():
     banner()
     permission = str(input('Are you ready to install??? (Y/n) ')).lower()
     if permission == 'y':
-        """
         try:
             print('Installing Primary Packages...\n')
             prm = Primary()
@@ -210,7 +209,6 @@ def main():
             print('"Rhythbox" installed.')
         except:
             print('Sorry, Something went wrong!\nMedia Player installation Failed.')
-        """
         try:
             print('Installing IDE\'s')
             ide = IDE()
@@ -221,16 +219,15 @@ def main():
             print('"Microsoft VSCode" installed.')
         except:
             print('Sorry, Something went wrong!\nIDE installation Failed.')
-        """
-        #try:
-        print('Installing ZSH...')
-        zsh = ZSH()
-        zsh.install()
-        zsh.custom_zsh()
-        zsh.zsh_fonts()
-        #except e:
-        #    print('Sorry Something went wrong. ZSH Installation or Customization failed.')
-        """
+        try:
+            print('Installing ZSH...')
+            zsh = ZSH()
+            zsh.install()
+            zsh.custom_zsh()
+            zsh.zsh_fonts()
+        except :
+            print('Sorry Something went wrong. ZSH Installation or Customization failed.')
+
         print('Succefully Installed. Enjoy!!!!\nPlease "reboot" the system now.')
         _restart = str(input('Restart now? (Y/n) ')).lower()
         if _restart == 'y':

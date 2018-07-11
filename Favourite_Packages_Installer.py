@@ -89,15 +89,12 @@ class IDE():
 
     def vscode(self):
         #   Installs Microsoft Visual Stusio Code
-        # Download and store GPG Key
-        system('curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg')
-        # Add repo to sources
-        system('sudo mv -f microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg &&\
-                sudo sh -c \'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable \
-                main" > /etc/apt/sources.list.d/vscode.list\'')
-        update()
+        # Download Deb Package
+        system('wget -O vscode.deb https://go.microsoft.com/fwlink/?LinkID=760868')
         # Install vscode
-        system('sudo apt-get install code -y')
+        system('sudo dpkg -i vscode.deb')
+        system('sudo apt install -f')
+        system('rm vscode.deb')
 
     def subl(self):
         #   Installs Sublime Text-3 Stable
@@ -118,13 +115,12 @@ class ZSH():
         # Installs ZSH Shell
         system('sudo apt-get install zsh -y')
         # Changes Default shell to zsh from bash
-        system('sudo chsh -s $(which zsh)')
 
     def custom_zsh(self):
         #   Installs and customize zsh shell
         _current_directory = getcwd()
         # Downloads and Copies oh-my-zsh plugin
-        remove('~/.oh-my-zsh')
+        system('sudo rm -rf ~/.oh-my-zsh')
         system('git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh')
         # Copy the Configuration file to Home Directory
         system('sudo cp ' + _current_directory + '/.zshrc ~/')
@@ -145,6 +141,9 @@ class ZSH():
         # Install the fontconfig file
         system('mkdir -p ~/.config/fontconfig/conf.d/')
         system('mv -f 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/')
+    def change_shell(self):
+        # Changing the Default shell from bash to zsh
+        system('sudo chsh -s $(which zsh)')
 
 def get_codename():
     #   This function will get the codename of running Distro
@@ -210,25 +209,23 @@ def main():
             print('"Rhythbox" installed.')
         except:
             print('Sorry, Something went wrong!\nMedia Player installation Failed.')
-
         try:
             print('Installing IDE\'s')
             ide = IDE()
             print('Installing "Sublime Text 3 Stable"...')
-            ide.subl()
+            #ide.subl()
             print('"Sublime Text 3 Stable" installed.\nInstalling "Microsoft VSCode"...')
             ide.vscode()
             print('"Microsoft VSCode" installed.')
         except:
             print('Sorry, Something went wrong!\nIDE installation Failed.')
-
         try:
             print('Installing ZSH...')
             zsh = ZSH()
             zsh.install()
-            zsh.zsh_fonts()
             zsh.custom_zsh()
-        except:
+            zsh.zsh_fonts()
+        except :
             print('Sorry Something went wrong. ZSH Installation or Customization failed.')
 
         print('Succefully Installed. Enjoy!!!!\nPlease "reboot" the system now.')
