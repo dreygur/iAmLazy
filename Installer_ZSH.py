@@ -124,9 +124,9 @@ class ZSH():
         #   Installs and customize zsh shell
         _current_directory = getcwd()
         # Downloads and Copies oh-my-zsh plugin
-        remove('~/.oh-my-zsh')
         system('git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh')
         # Copy the Configuration file to Home Directory
+        remove('~/.zshrc')
         system('sudo cp ' + _current_directory + '/.zshrc ~/')
 
     def zsh_fonts(self):
