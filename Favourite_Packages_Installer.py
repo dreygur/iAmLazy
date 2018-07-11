@@ -240,4 +240,8 @@ def main():
         print('You Choose to Exit. Exiting....\n')
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("You choose to exit.\nExiting...")
+        sys.exit()
