@@ -227,8 +227,8 @@ def main():
         print('Installing ZSH...')
         zsh = ZSH()
         zsh.install()
-        zsh.zsh_fonts()
         zsh.custom_zsh()
+        zsh.zsh_fonts()
         #except e:
         #    print('Sorry Something went wrong. ZSH Installation or Customization failed.')
 
