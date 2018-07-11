@@ -90,12 +90,8 @@ class IDE():
     def vscode(self):
         #   Installs Microsoft Visual Stusio Code
         # Download and store GPG Key
-        system('curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg')
+        system('wget https://go.microsoft.com/fwlink/?LinkID=760868')
         # Add repo to sources
-        system('sudo mv -f microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg')
-        system('sudo sh -c \'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable \
-                main" > /etc/apt/sources.list.d/vscode.list\'')
-        update()
         # Install vscode
         system('sudo apt-get install code -y')
 
@@ -218,7 +214,7 @@ def main():
             print('Installing IDE\'s')
             ide = IDE()
             print('Installing "Sublime Text 3 Stable"...')
-            ide.subl()
+            #ide.subl()
             print('"Sublime Text 3 Stable" installed.\nInstalling "Microsoft VSCode"...')
             ide.vscode()
             print('"Microsoft VSCode" installed.')
