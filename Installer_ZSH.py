@@ -92,8 +92,8 @@ class IDE():
         # Download and store GPG Key
         system('curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg')
         # Add repo to sources
-        system('sudo mv -f microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg &&\
-                sudo sh -c \'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable \
+        system('sudo mv -f microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg')
+        system('sudo sh -c \'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable \
                 main" > /etc/apt/sources.list.d/vscode.list\'')
         update()
         # Install vscode
