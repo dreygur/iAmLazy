@@ -94,7 +94,7 @@ class IDE():
         system('wget -O vscode.deb https://go.microsoft.com/fwlink/?LinkID=760868')
         # Install vscode
         system('sudo dpkg -i vscode.deb')
-        system('sudo apt install -f -y')
+        system('sudo apt install -fy')
         system('rm vscode.deb')
 
     def subl(self):
@@ -144,7 +144,7 @@ class ZSH():
         system('mv -f 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/')
     def change_shell(self):
         # Changing the Default shell from bash to zsh
-        system('sudo chsh -s $(which zsh)')
+        system('chsh -s $(which zsh)')
 
 def get_codename():
     #   This function will get the codename of running Distro
