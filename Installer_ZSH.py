@@ -90,7 +90,7 @@ class IDE():
     def vscode(self):
         #   Installs Microsoft Visual Stusio Code
         # Download and store GPG Key
-        system('wget https://go.microsoft.com/fwlink/?LinkID=760868')
+        system('wget https://go.microsoft.com/fwlink/?LinkID=760868 vscode.deb')
         # Add repo to sources
         # Install vscode
         system('sudo apt-get install code -y')
