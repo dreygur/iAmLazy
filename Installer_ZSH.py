@@ -90,10 +90,11 @@ class IDE():
     def vscode(self):
         #   Installs Microsoft Visual Stusio Code
         # Download Deb Package
-        system('wget -o https://go.microsoft.com/fwlink/?LinkID=760868 > vscode.deb')
+        system('wget -O vscode.deb https://go.microsoft.com/fwlink/?LinkID=760868')
         # Install vscode
         system('sudo dpkg -i vscode.deb')
         system('sudo apt install -f')
+        system('rm vscode.deb')
 
     def subl(self):
         #   Installs Sublime Text-3 Stable
