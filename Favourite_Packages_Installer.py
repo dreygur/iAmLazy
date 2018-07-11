@@ -94,7 +94,7 @@ class IDE():
         system('wget -O vscode.deb https://go.microsoft.com/fwlink/?LinkID=760868')
         # Install vscode
         system('sudo dpkg -i vscode.deb')
-        system('sudo apt install -f')
+        system('sudo apt install -f -y')
         system('rm vscode.deb')
 
     def subl(self):
