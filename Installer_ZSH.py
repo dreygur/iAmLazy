@@ -90,7 +90,7 @@ class IDE():
     def vscode(self):
         #   Installs Microsoft Visual Stusio Code
         # Download Deb Package
-        system('wget https://go.microsoft.com/fwlink/?LinkID=760868 | mv $1 vscode.deb')
+        system('wget -co https://go.microsoft.com/fwlink/?LinkID=760868 > vscode.deb')
         # Install vscode
         system('sudo dpkg -i vscode.deb')
         system('sudo apt install -f')
