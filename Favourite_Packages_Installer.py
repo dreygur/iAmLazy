@@ -141,7 +141,7 @@ class ZSH():
         system('fc-cache -vf ~/.local/share/fonts/')
         # Install the fontconfig file
         system('mkdir -p ~/.config/fontconfig/conf.d/')
-        system('mv -f 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/')
+        system('sudo mv -f 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/')
     def change_shell(self):
         # Changing the Default shell from bash to zsh
         system('chsh -s $(which zsh)')
