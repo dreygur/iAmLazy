@@ -223,14 +223,14 @@ def main():
         except:
             print('Sorry, Something went wrong!\nIDE installation Failed.')
         """
-        try:
-            print('Installing ZSH...')
-            zsh = ZSH()
-            zsh.install()
-            zsh.zsh_fonts()
-            zsh.custom_zsh()
-        except:
-            print('Sorry Something went wrong. ZSH Installation or Customization failed.')
+        #try:
+        print('Installing ZSH...')
+        zsh = ZSH()
+        zsh.install()
+        zsh.zsh_fonts()
+        zsh.custom_zsh()
+        #except e:
+        #    print('Sorry Something went wrong. ZSH Installation or Customization failed.')
 
         print('Succefully Installed. Enjoy!!!!\nPlease "reboot" the system now.')
         _restart = str(input('Restart now? (Y/n) ')).lower()
