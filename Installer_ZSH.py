@@ -118,7 +118,6 @@ class ZSH():
         # Installs ZSH Shell
         system('sudo apt-get install zsh -y')
         # Changes Default shell to zsh from bash
-        system('sudo chsh -s $(which zsh)')
 
     def custom_zsh(self):
         #   Installs and customize zsh shell
@@ -145,6 +144,9 @@ class ZSH():
         # Install the fontconfig file
         system('mkdir -p ~/.config/fontconfig/conf.d/')
         system('mv -f 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/')
+    def change_shell(self):
+        # Changing the Default shell from bash to zsh
+        system('sudo chsh -s $(which zsh)')
 
 def get_codename():
     #   This function will get the codename of running Distro
@@ -211,7 +213,7 @@ def main():
             print('"Rhythbox" installed.')
         except:
             print('Sorry, Something went wrong!\nMedia Player installation Failed.')
-
+        """
         try:
             print('Installing IDE\'s')
             ide = IDE()
@@ -231,7 +233,7 @@ def main():
         zsh.zsh_fonts()
         #except e:
         #    print('Sorry Something went wrong. ZSH Installation or Customization failed.')
-
+        """
         print('Succefully Installed. Enjoy!!!!\nPlease "reboot" the system now.')
         _restart = str(input('Restart now? (Y/n) ')).lower()
         if _restart == 'y':
