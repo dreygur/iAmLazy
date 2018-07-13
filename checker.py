@@ -28,17 +28,32 @@ RUN = {
 
 #   Runs the solution
 def run_solution(filename, expect):
+    #   Run The Solution
+
+    # Tests if dir bin exists if not then creates it
     if not os.path.exists('bin/'):
         os.makedirs('bin/')
 
     try:
+        # Checks the src folder exists or not
         if not os.path.exists('src/'+filename):
-            print("Invalid file!")
+            print("Invalid file!\nPut your sourcefile to 'src' directory.")
+            os.mkdir('src/')
             return
 
+        # Existance checking of inputs directory
+        if not os.path.exists('inputs/'):
+            os.mkdir('inputs/')
+        
+        # Checker for existance of expected directory
+        if not os.path.exists('expected/'):
+            os.mkdir('expected/')
+
+        # Only GOD and I know what i have written here ;P
         prefix, ext = os.path.splitext(filename)
         prefix = prefix.split('/')[-1]
 
+        # Checks file extension and runs command as it applies
         if ext in ['.c', '.cpp']:
             compiler_commad = COMPILE[ext].format(prefix)
             try:
@@ -48,29 +63,38 @@ def run_solution(filename, expect):
                 print(e)
                 return
 
+        # Sets PIPE 
         outputfile = subprocess.PIPE
+        # Takes inputs from the input file located at inputs directory
         inputfile = open('inputs/{0}.in'.format(prefix))
 
+        # Checks extension and decides which command to run
         if ext == '.py':
             program = RUN[ext].format(prefix)
         else:
             program = RUN['other'].format(prefix)
 
+        # Runs Commands in PIPE and process input oputputs
         process = subprocess.Popen(program, stdin=inputfile, stdout=outputfile)
 
+        # Skip it
         while process.poll() is None:
             pass
 
+        # Oh boy!
         if process.returncode != 0:
             print("\nFAILURE")
             return
 
+        # Gets output from PIPE->stdout
         content = process.stdout.read().decode()
 
+        # Anyone can get these!
         print('Output: ')
         print('+-+-+-+-+-+-+')
         print(content)
 
+        # This also...
         if expect:
             print('Matching...')
             print('+-+-+-+-+-+-+')
@@ -84,7 +108,6 @@ def run_solution(filename, expect):
                     print('+-+-+-+-+-+-+')
                     print(expected.strip())
                     print('\n')
-
             except Exception as e:
                 print(e)
 
@@ -93,18 +116,20 @@ def run_solution(filename, expect):
         return
 
 def clean():
+    #   Function to clean junks from bin directory 
     if os.path.exists('bin/'):
         for f in os.listdir('bin/'):
             os.remove('bin/' + f)
         shutil.rmtree('bin/')
 
 def banner():
+    #   Yeah, Babe! It's the banner...
     lol = """        
              dP""b8 88  88 888888  dP""b8 88  dP 888888 88""Yb 
             dP   `" 88  88 88__   dP   `" 88odP  88__   88__dP 
             Yb      888888 88""   Yb      88"Yb  88""   88"Yb  
              YboodP 88  88 888888  YboodP 88  Yb 888888 88  Yb 
-             
+
              By: Totul
              Github: https://www.github.com/rytotul
              Facebook: https://www.facebook.com/rytotul
@@ -113,6 +138,7 @@ def banner():
     print(lol)
 
 def main():
+    #   The main function. Get it as you think
     parser = ArgumentParser(description='Solution Manager\nAuthor: Totul (fb.com/rytotul).')
 
     parser.add_argument('solution', metavar='solution', type=str, nargs='?',
@@ -144,3 +170,4 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         print('User Exited...')
         sys.exit()
+#   My code ends. Time to sleep :D
