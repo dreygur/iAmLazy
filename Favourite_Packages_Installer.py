@@ -167,10 +167,12 @@ def banner():
     \tGithub: https://www.github.com/rytotul
     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
     """
+    """ 
     system('whoami > tmp')
     uname = open('tmp', 'r').read()
-    remove('tmp')
-    print(text.format(uname[:-1]))
+    remove('tmp') """
+    uname = system('grep "^${USER}:" /etc/passwd | cut -d: -f5')
+    print(text.format(uname))
 
 def main():
     #   The main Function
@@ -184,8 +186,8 @@ def main():
             print('Done!\nInstalling "QBittorrent"...')
             prm.qbittorrent()
             print('QBittorrent installed.\nInstalling "Libre Office"')
-            #prm.libre_office()
-            #print('"Libre Office" installed.')
+            prm.libre_office()
+            print('"Libre Office" installed.')
         except:
             print('Sorry, Something went wrong!\nPrimary Packages Installation Failed.')
         
@@ -214,7 +216,7 @@ def main():
             print('Installing IDE\'s')
             ide = IDE()
             print('Installing "Sublime Text 3 Stable"...')
-            #ide.subl()
+            ide.subl()
             print('"Sublime Text 3 Stable" installed.\nInstalling "Microsoft VSCode"...')
             ide.vscode()
             print('"Microsoft VSCode" installed.')
