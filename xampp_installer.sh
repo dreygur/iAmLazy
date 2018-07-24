@@ -17,6 +17,7 @@ if [[ $1 == "l" ]]; then
     else
         # Downloads and installs XAMPP Server
         # User action needed on GUI
+        echo -e "No installed environment found.\nInstalling......\n\n"
         wget -O xampp.run https://downloadsapachefriends.global.ssl.fastly.net/xampp-files/7.2.7/xampp-linux-x64-7.2.7-0-installer.run
         sudo chmod 755 xampp.run
         sudo ./xampp.run
@@ -24,7 +25,7 @@ if [[ $1 == "l" ]]; then
         sudo cp xampp_installer.sh /usr/share/xampp.sh
         shell=$(echo $SHELL | tr -d /bin/)
         shell+="rc"
-        echo "alias xmp='/usr/share/xampp.sh'" > ~/.$shell
+        sudo echo "alias xmp='/usr/share/xampp.sh'" >> ~/.$shell
     fi
 elif [[ $1 == "s" ]]; then
     # Stops XAMPP Server
