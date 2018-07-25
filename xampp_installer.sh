@@ -17,15 +17,19 @@ if [[ $1 == "l" ]]; then
     else
         # Downloads and installs XAMPP Server
         # User action needed on GUI
-        echo -e "No installed environment found.\nInstalling......\n\n"
+        echo -e "No installed environment found.\nInstalling......\n"
         wget -O xampp.run https://downloadsapachefriends.global.ssl.fastly.net/xampp-files/7.2.7/xampp-linux-x64-7.2.7-0-installer.run
-        sudo chmod 755 xampp.run
-        sudo ./xampp.run &
-        rm -rf xampp.run
-        sudo cp xampp_installer.sh /usr/share/xampp.sh
-        shell=$(echo $SHELL | tr -d /bin/)
-        shell+="rc"
-        sudo echo "alias xmp='/usr/share/xampp.sh'" >> ~/.$shell
+        if [[ -e xampp.run ]]; then
+            sudo chmod 755 xampp.run
+            sudo ./xampp.run &
+            rm -rf xampp.run
+            sudo cp xampp_installer.sh /usr/share/xampp.sh
+            shell=$(echo $SHELL | tr -d /bin/)"rc"
+            echo "alias xmp='/usr/share/xampp.sh'" >> ~/.$shell
+            echo -e "Installation Complete....\nNext time you can run it bu `xampp 'option'`\n"
+        else
+            echo -e "Sorry Something went wrong!!!\nTry again...\n"
+        fi
     fi
 elif [[ $1 == "s" ]]; then
     # Stops XAMPP Server
