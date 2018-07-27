@@ -28,10 +28,14 @@ if [[ $1 == "l" ]]; then
             fi
             sudo cp xampp_installer.sh /usr/share/xampp.sh
             if [[ -e /opt/lampp/etc/httpd.conf ]]; then
-                sudo rm /opt/lampp/etc/httpd.conf
-                sudo rm /opt/lampp/etc/extra/httpd-vhosts.conf
-                sudo cp -f ./XAMPP/httpd.conf /opt/lampp/etc/httpd.conf
-                sudo cp -f ./XAMPP/httpd-vhosts.conf /opt/lampp/etc/extra/httpd-vhosts.conf
+                if [[ ./XAMPP/httpd.conf ]]; then
+                    sudo rm /opt/lampp/etc/httpd.conf
+                    sudo rm /opt/lampp/etc/extra/httpd-vhosts.conf
+                    sudo cp -f ./XAMPP/httpd.conf /opt/lampp/etc/httpd.conf
+                    sudo cp -f ./XAMPP/httpd-vhosts.conf /opt/lampp/etc/extra/httpd-vhosts.conf
+                else
+                    echo -e "Custom Config Files not found!\n"
+                fi
             fi
             shell=$(echo $SHELL | sed -e 's/\/usr\/bin\///')"rc"
             ttl_dir=$(pwd)
