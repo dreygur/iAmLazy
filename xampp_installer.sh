@@ -27,6 +27,12 @@ if [[ $1 == "l" ]]; then
                 sudo rm /usr/share/xampp.sh
             fi
             sudo cp xampp_installer.sh /usr/share/xampp.sh
+            if [[ -e /opt/lampp/etc/httpd.conf ]]; then
+                sudo rm /opt/lampp/etc/httpd.conf
+                sudo rm /opt/lampp/etc/extra/httpd-vhosts.conf
+                sudo cp -f ./XAMPP/httpd.conf /opt/lampp/etc/httpd.conf
+                sudo cp -f ./XAMPP/httpd-vhosts.conf /opt/lampp/etc/extra/httpd-vhosts.conf
+            fi
             shell=$(echo $SHELL | tr -d /bin/)"rc"
             echo "alias xmp='/usr/share/xampp.sh'" >> ~/.$shell
             echo -e "Installation Complete....\nNext time you can run it bu `xampp 'option'`\n"
