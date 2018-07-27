@@ -35,7 +35,7 @@ if [[ $1 == "l" ]]; then
             fi
             shell=$(echo $SHELL | sed -e 's/\/usr\/bin\///')"rc"
             ttl_dir=$(pwd)
-            cp ~/.$shell $d
+            cp ~/.$shell $ttl_dir
             sudo echo "alias xmp='/usr/share/xampp.sh'" >> .$shell
             sudo cp -f .$shell ~/.$shell
             echo -e "Installation Complete....\nNext time you can run it bu `xampp 'option'`\n"
