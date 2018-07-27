@@ -38,7 +38,7 @@ if [[ $1 == "l" ]]; then
             cp ~/.$shell $ttl_dir
             sudo echo "alias xmp='/usr/share/xampp.sh'" >> .$shell
             sudo cp -f .$shell ~/.$shell
-            echo -e "Installation Complete....\nNext time you can run it bu `xampp 'option'`\n"
+            echo -e "Installation Complete....\nNext time you can run it by: xmp 'option'\n"
         else
             echo -e "Sorry Something went wrong!!!\nTry again...\n"
         fi
