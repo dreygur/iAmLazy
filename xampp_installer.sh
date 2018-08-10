@@ -22,7 +22,7 @@ if [[ $1 == "l" ]]; then
         if [[ -e xampp.run ]]; then
             sudo chmod 755 xampp.run
             sudo ./xampp.run
-            #rm -rf xampp.run
+            rm -rf xampp.run
             if [[ -e /usr/share/xampp.sh ]]; then
                 sudo rm /usr/share/xampp.sh
             fi
