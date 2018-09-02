@@ -80,15 +80,11 @@ def banner():
     \tGithub: https://www.github.com/rytotul
     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
     """
-    """ 
     system('whoami > tmp')
     uname = open('tmp', 'r').read()
-    remove('tmp') """
-    uname = system('grep "^${USER}:" /etc/passwd | cut -d: -f5')
-    if uname is 0:
-        print(text.format('Android'))
-    else:
-        print(text.format(uname))
+    remove('tmp')
+    #uname = system('grep "^${USER}:" /etc/passwd | cut -d: -f5')
+    print(text.format(uname))
 
 def main():
     #   The main Function
