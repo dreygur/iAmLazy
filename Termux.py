@@ -16,8 +16,6 @@
 import sys
 from os import system, remove, getcwd
 
-#   TO-DO: Implementaion of LAMP Installation from Maateen of make it myself
-
 class ZSH():
     """ This Class is for installing and configuring zsh shell """
 
@@ -29,11 +27,22 @@ class ZSH():
     def custom_zsh(self):
         #   Installs and customize zsh shell
         _current_directory = getcwd()
+        # Install termux-zsh
+        system('git clone https://github.com/rytotul/termux-zsh/.git "$HOME/termux-ohmyzsh" --depth 1')
+        system('mv "$HOME/.termux" "$HOME/.termux.bak.$(date +%Y.%m.%d-%H:%M:%S)"')
+        system('cp -R "$HOME/termux-zsh/.termux" "$HOME/.termux"')
         # Downloads and Copies oh-my-zsh plugin
-        system('pkg rm -rf ~/.oh-my-zsh')
-        system('git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh')
+        system('git clone git://github.com/robbyrussell/oh-my-zsh.git "$HOME/.oh-my-zsh" --depth 1')
+        system('mv "$HOME/.zshrc" "$HOME/.zshrc.bak.$(date +%Y.%m.%d-%H:%M:%S)"')
+        system('cp "$HOME/.oh-my-zsh/templates/zshrc.zsh-template" "$HOME/.zshrc"')
+        system('sed -i \'/^ZSH_THEME/d\' "$HOME/.zshrc"')
         # Copy the Configuration file to Home Directory
-        system('cp ' + _current_directory + '/.zshrc ~/')
+        system('sed -i \'1iZSH_THEME="agnoster"\' "$HOME/.zshrc"')
+        # I will implement these later
+        #system('echo "alias chcolor=\'$HOME/.termux/colors.sh\'" >> "$HOME/.zshrc"')
+        #system('echo "alias chfont=\'$HOME/.termux/fonts.sh\'" >> "$HOME/.zshrc"')
+        system('git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME/.zsh-syntax-highlighting" --depth 1')
+        system('echo "source $HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> "$HOME/.zshrc"')
 
     def zsh_fonts(self):
         #   Installs the required pakages for oh_my_zsh
@@ -53,7 +62,7 @@ class ZSH():
         system('mv -f 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/')
     def change_shell(self):
         # Changing the Default shell from bash to zsh
-        system('chsh -s $(which zsh)')
+        system('chsh -s zsh)')
 
 def update():
     #   This function will download the package lists from the repositories and
@@ -88,7 +97,8 @@ def main():
             zsh = ZSH()
             zsh.install()
             zsh.custom_zsh()
-            zsh.zsh_fonts()
+            #zsh.zsh_fonts()
+            zsh.change_shell()
         except :
             print('Sorry Something went wrong. ZSH Installation or Customization failed.')
 
