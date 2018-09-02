@@ -15,7 +15,7 @@
 
 import sys
 from os import system, remove, getcwd
-from lsb_release import get_lsb_information
+
 #   TO-DO: Implementaion of LAMP Installation from Maateen of make it myself
 
 class ZSH():
@@ -54,11 +54,6 @@ class ZSH():
     def change_shell(self):
         # Changing the Default shell from bash to zsh
         system('chsh -s $(which zsh)')
-
-def get_codename():
-    #   This function will get the codename of running Distro
-    info = get_lsb_information()
-    return info['CODENAME']
 
 def update():
     #   This function will download the package lists from the repositories and
