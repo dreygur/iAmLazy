@@ -84,8 +84,11 @@ def banner():
     system('whoami > tmp')
     uname = open('tmp', 'r').read()
     remove('tmp') """
-    uname = system('grep "^${USER}:" /etc/passwd | cut -d: -f5')
-    print(text.format(uname))
+    try:
+        uname = system('grep "^${USER}:" /etc/passwd | cut -d: -f5')
+        print(text.format(uname))
+    except:
+        print(text.format("Android"))
 
 def main():
     #   The main Function
