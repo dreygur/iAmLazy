@@ -3,9 +3,12 @@ language: python
 
 python:
   - 3.6
+
+sudo: required
   
-#install:
+install:
 #  - pip install -r requirements.txt
+  - sudo apt-get install lsb-release
 
 script:
   - python Favourite_Packages_Installer.py
