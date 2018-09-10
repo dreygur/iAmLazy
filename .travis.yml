@@ -2,7 +2,6 @@
 language: python
 
 python:
-  - 2.7
   - 3.6
 
 cache: pip
@@ -10,7 +9,8 @@ cache: pip
 sudo: required
   
 install:
-  - sudo apt-get install lsb-release
+  - sudo apt install -y lsb-release python3-pip
+  - 
   - python3 -m pip install -r requirements.txt
 
 script:
