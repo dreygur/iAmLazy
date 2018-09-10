@@ -4,3 +4,5 @@ theme: jekyll-theme-cayman
 avatar: https://raw.githubusercontent.com/barryclark/jekyll-now/master/images/jekyll-logo.png
 show_downloads: true
 google_analytics: UA-114697093-1
+layout: default
+comments: true
