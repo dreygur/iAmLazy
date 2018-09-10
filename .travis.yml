@@ -9,9 +9,8 @@ cache: pip
 sudo: required
   
 install:
-  - sudo apt install -y lsb-release python3-pip
-  - 
-  - python3 -m pip install -r requirements.txt
+  - sudo apt install -y --reinstall lsb-release
+  #- python3 -m pip install -r requirements.txt
 
 script:
   - python3 Favourite_Packages_Installer.py
