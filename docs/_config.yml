@@ -6,3 +6,8 @@ show_downloads: true
 google_analytics: UA-114697093-1
 layout: default
 comments: true
+
+# My Custom Configs
+ttl:
+  seo:
+    og-image: https://avatars2.githubusercontent.com/u/17668509?s=400&v=4
