@@ -8,7 +8,7 @@
 #   Then I would be able to automate the
 #   boring staffs.
 #   Author: Rakibul Yeasin (Totul)
-#   FB: https://www.facebook.com/rytotul
+#   FB: https://www.facebook.com/rakibul03
 #
 #   ***Not Licensed***
 """
