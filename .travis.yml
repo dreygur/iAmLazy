@@ -13,7 +13,7 @@ cache: pip
 sudo: required
 
 script:
-  - python3 Favourite_Packages_Installer.py < tests/input.txt
+  - python3 Favourite_Packages_Installer.py < tests/fvpi_input.txt
 
 
 notifications:
