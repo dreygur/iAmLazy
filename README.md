@@ -1,3 +1,7 @@
+<p align="center">
+<img title="Languages Used" src="https://badge.langauge.io/rytotul/iAmLazy" />
+</p>
+
 # Help me to be 'Lazy' [![Build Status](https://travis-ci.org/rytotul/iAmLazy.svg?branch=master)](https://travis-ci.org/rytotul/iAmLazy)
 
 > I am too much lazy and also love to experiment with code
