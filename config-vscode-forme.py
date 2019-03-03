@@ -1,4 +1,4 @@
-#/usr/bin/env python3
+#!/usr/bin/env python3
 
 """
     Installs my favourite plugins and theme for VSCode
