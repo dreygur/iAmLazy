@@ -1,1 +1,2 @@
-
+lsb_release
+apt
