@@ -2,7 +2,7 @@
 <img title="Lazy Developer" src="https://imgur.com/download/RnpzpMh" />
 </p>
 
-# Bash Scriptd written from Lazyness stays here
+# Bash Scripts written from Lazyness stays here
 
 ```bash
 #!/usr/bin/bash
