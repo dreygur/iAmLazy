@@ -3,7 +3,7 @@
 """
 #   Solution Checker
 #   Author: Totul
-#   URI: https://www.facebook.com/rytotul
+#   URI: https://www.facebook.com/dreygur
 #   Free to use!
 """
 
@@ -130,16 +130,16 @@ def banner():
             Yb      888888 88""   Yb      88"Yb  88""   88"Yb  
              YboodP 88  88 888888  YboodP 88  Yb 888888 88  Yb 
 
-             By: Totul
-             Github: https://www.github.com/rytotul
-             Facebook: https://www.facebook.com/rytotul
+             By: Rakibul Yeasin
+             Github: https://www.github.com/dreygur
+             Facebook: https://www.facebook.com/dreygur
         +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
         """
     print(lol)
 
 def main():
     #   The main function. Get it as you think
-    parser = ArgumentParser(description='Solution Manager\nAuthor: Totul (fb.com/rytotul).')
+    parser = ArgumentParser(description='Solution Manager\nAuthorRakibul Yeasin (fb.com/dreygur).')
 
     parser.add_argument('solution', metavar='solution', type=str, nargs='?',
             help='The complete filename for the solution')
