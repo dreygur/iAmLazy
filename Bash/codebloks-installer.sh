@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 :"
-    Code::BLocks Installer for Debian/Ubuntu
+    Code::BLocks Installer for Debian/Ubuntu/Linux-Mint
     Author: Rakibul Yeasin
 "
 
