@@ -23,6 +23,6 @@ notifications:
       - dropnup:x1ZOJDTXefsq1eLGChjXgKhk#general
       - dropnup:x1ZOJDTXefsq1eLGChjXgKhk#dev
 
-before_script:
+#before_script:
   #- sudo apt install -y --reinstall lsb-release
   #- python3 -m pip install -r requirements.txt
