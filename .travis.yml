@@ -13,7 +13,8 @@ cache: pip
 sudo: required
 
 script:
-  - python3 Favourite_Packages_Installer.py < tests/fvpi_input.txt
+  #- python3 Favourite_Packages_Installer.py < tests/fvpi_input.txt
+  - bash ./Bash/codebloks-installer.sh
 
 
 notifications:
@@ -23,5 +24,5 @@ notifications:
       - dropnup:x1ZOJDTXefsq1eLGChjXgKhk#dev
 
 before_script:
-  - sudo apt install -y --reinstall lsb-release
-  - python3 -m pip install -r requirements.txt
+  #- sudo apt install -y --reinstall lsb-release
+  #- python3 -m pip install -r requirements.txt
