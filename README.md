@@ -6,10 +6,9 @@
 
 > I am too much lazy and also love to experiment with code
 or my system. So, the system usually goes wrong and I need to
-reinstall it. But after the installing process finishes my job starts.
+reinstall it. But after the installing process finishes, my job starts.
 I always have to customize and install the packages mannually.
-And it takes time from the reserved time for my sleep.
-
+And it takes time from the reserved time for my sleep.  
 _So, I somehow managed to write the scripts and helped me to be lazy_
 
 ### Requirements:
