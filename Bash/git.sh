@@ -2,7 +2,6 @@
 
 : "
 #   Git updater for Linux
-#   Modified by: Nazmul Hossain (fb.com/nazmul.XI)
 "
 
 function main {
