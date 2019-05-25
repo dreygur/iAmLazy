@@ -23,6 +23,18 @@ _So, I somehow managed to write the scripts and helped me to be lazy_
 
 * Favourite Package Installer (_It will install the packages I like most for my linux distro_)
 
+### How-To:
+* `python3 Python/Favourite\ Packages\ Installer.py` installs my favourite packages on debian based distro
+* `python3 Python/Install\ Themes.py` configures my XFCE4-de as I like to use
+* `python3 Python/Config\ vscode\ for\ me.py` installs the plugins I use on my Visual Studio Code
+* `bash git.sh` updates my git repo (The script needs to be located in the responsible repo. Current Location: `Bash/git.sh`)
+* `bash codebloks-installer.sh` installs Code::Blocks IDE (As I was learning C on windows so it was needed :smile:. Location: `Bash/codebloks-installer.sh`)
+* `bash xampp_installer.sh` install the famous XAMPP-Server on debian :smile: (Location: `Bash/xampp_installer.sh`)
+* `bash backup.sh` for backing up my installed packages on system (Location: `backup.sh`)
+* `./SMS` it has a long story. To compile: `gcc -c SMS.c -o SMS -l curl`
+* 
+
+
 ### Todo:
 
 * Facebook message autoresponder
