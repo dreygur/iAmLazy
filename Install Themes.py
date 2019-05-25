@@ -7,7 +7,7 @@
     Please push some bug-fix and help me to be lazy as always :)
     @dreygur (Rakibul Yeasin)
 
-    22:05:2019 02:41:AM THURSDAY
+    25:05:2019 10:41:AM SATURDAY
 """
 
 import sys
