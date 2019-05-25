@@ -31,12 +31,12 @@ def themes():
         os.system('mkdir ~/.icons') # Creates .icons directory
 
     # Download icon theme
-    os.system('wget https://dl.opendesktop.org/api/files/download/id/1557303928/s/a877a5254bcaaf6304863462960eba12efc82250f7f08d331de6fc9f4c07d7ebae94c9c0e959af7201d92001a711878006eb23bdbe2448e72e3174d63d0fb5c1/t/1558558998/lt/download/Flat-Remix-Blue-Dark_1.91.tar.xz -O Flat-Remix.tar.xz')
-    os.system('cp Flat-Remix.tar.xz ~/.icons/ && tar -xvf ~/.icons/Flat-Remix.tar.xz') # Copy and extract the tarball to .icons directory
+    #os.system('wget https://dl.opendesktop.org/api/files/download/id/1557303928/s/a877a5254bcaaf6304863462960eba12efc82250f7f08d331de6fc9f4c07d7ebae94c9c0e959af7201d92001a711878006eb23bdbe2448e72e3174d63d0fb5c1/t/1558558998/lt/download/Flat-Remix-Blue-Dark_1.91.tar.xz -O Flat-Remix.tar.xz')
+    os.system('cp assets/Flat-Remix.tar.xz ~/.icons/ && tar -xvf ~/.icons/Flat-Remix.tar.xz') # Copy and extract the tarball to .icons directory
 
     # Download xfce4/GTK3 theme
-    os.system('wget https://dl.opendesktop.org/api/files/download/id/1544899311/s/50582968e1b7081cd873c65a5d430f43bfd6017961d64c27c58bcd26a09af878e9b886ae1d483135b11de6ed75aed98c5b5d8248542b2de1e33ccd56b7d4fc3f/t/1558559873/lt/download/McOS-MJV-Dark-XFCE-Edition-2.3.tar.gz -O McOS.tar.gz')
-    os.system('cp McOS.tar.gz ~/.themes/ && tar -xvf ~/.themes/McOS.tar.gz') # Copy and extract the tarbal to .themes directory
+    #os.system('wget https://dl.opendesktop.org/api/files/download/id/1544899311/s/50582968e1b7081cd873c65a5d430f43bfd6017961d64c27c58bcd26a09af878e9b886ae1d483135b11de6ed75aed98c5b5d8248542b2de1e33ccd56b7d4fc3f/t/1558559873/lt/download/McOS-MJV-Dark-XFCE-Edition-2.3.tar.gz -O McOS.tar.gz')
+    os.system('cp assets/McOS.tar.gz ~/.themes/ && tar -xvf ~/.themes/McOS.tar.gz') # Copy and extract the tarbal to .themes directory
 
     # Clean Current Working Directory
     os.system('rm McOS.tar.gz FLat-Remix.tar.xz')
@@ -55,9 +55,9 @@ def config():
     os.system('sudo apt-get update -y && sudo apt-get install plank -y') # Update the apt cache and install Plank
     
     # Copy xfce4 presets to .config
-    os.system('sudo cp -r ./config/xfce4 ~/.config')
+    os.system('sudo cp -rf ./config/xfce4 ~/.config')
     # Copy Plank setting to .config
-    os.system('sudo cp -r ./config/plank ~/.config')
+    os.system('sudo cp -rf ./config/plank ~/.config')
 
 def main():
     """
