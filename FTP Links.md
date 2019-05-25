@@ -1,56 +1,56 @@
-http://dl2.mihanpix.com/Serial/
-http://dl.my-film.in/serial/
-http://dl.sitemovie.ir/serial/
-http://79.127.126.110/Serial/
-http://1.2myfilmia.ir/Serial/
-http://dl.royamovie.com/Serial/
-http://dl.funsaber.net/serial/
-http://dl.par30dl.com/Serial/
-http://dl2.my98music.com/Data/Serial/
-http://cloud.jaymoon.net/tv/
-http://d2.bi-seda.ir/Tv.Shows/
-http://dl.mojoo.ir/upload/film/tv-shows/
-http://dl8.downloadoo.ir/Tvshow/
-http://mc2.dl3enter.in/files/serial1/
-http://server1.timepassbd.com/ftpdata1/TV%20Series/English/
-http://server1.timepassbd.com/ftpdata1/TV%20Series/
-http://fromv.ir/vip/Series/Ongoing/
-http://fromv.ir/vip/Series/Complete/
-http://fromv.ir/vip/Anime/
-http://79.127.126.110/Serial/
-http://fromv.ir/East/Korea/
-http://dl2.hexdownload.net/up/Movie/Series/
-http://dl.upload8.net/Serial/
-http://avadl.uploadt.com/New2/Serial/
-http://dl2.mihanpix.com/Film/
-http://dl.my-film.in/Movie/
-http://1.2myfilmia.ir/Film/
-http://dl.funsaber.net/animation/
-http://dl.funsaber.net/movie/
-http://dl.royamovie.com/Movie
-http://dl.funsaber.net/Collection/
-http://dl2.my98music.com/Data/Film/
-http://dl2.my98music.com/Data/Movie/
-http://dl.par30dl.com/
-http://cloud.jaymoon.net/movie/
-http://d2.bi-seda.ir/Animation/
-http://d2.bi-seda.ir/Films/
-http://dl.mojoo.ir/upload/film/Animations/
-http://dl.mojoo.ir/upload/film/movies/
-http://dl8.downloadoo.ir/Movie/
-http://server1.timepassbd.com/ftpdata1/Movies/
-http://server1.timepassbd.com/ftpdata1/
-http://fromv.ir/vip/Animation
-http://fromv.ir/vip/Movie/
-http://103.66.178.220/ftp/HDD2/Hindi%20Movies/
-http://103.66.178.220/ftp/HDD2/
-http://103.66.178.220/ftp/HDD1/
-http://103.67.198.6/uploaded-videos/?C=M;O=D
-http://ftp.newtek.com/multimedia/movies/
-http://dl3.vaiomusic.org/Movie/
-http://79.127.126.110/Film/
-http://dl2.hexdownload.net/up/Movie/
-http://dl2.heyserver.in/film/
-http://pz10093.parspack.net/Films/
-http://dlst18.xyz/dl/vip/film/3/
-http://avadl.uploadt.com/New2/Film/
+Link: http://dl2.mihanpix.com/Serial/  
+Link: http://dl.my-film.in/serial/  
+Link: http://dl.sitemovie.ir/serial/  
+Link: http://79.127.126.110/Serial/  
+Link: http://1.2myfilmia.ir/Serial/  
+Link: http://dl.royamovie.com/Serial/  
+Link: http://dl.funsaber.net/serial/  
+Link: http://dl.par30dl.com/Serial/  
+Link: http://dl2.my98music.com/Data/Serial/  
+Link: http://cloud.jaymoon.net/tv/  
+Link: http://d2.bi-seda.ir/Tv.Shows/  
+Link: http://dl.mojoo.ir/upload/film/tv-shows/  
+Link: http://dl8.downloadoo.ir/Tvshow/  
+Link: http://mc2.dl3enter.in/files/serial1/  
+Link: http://server1.timepassbd.com/ftpdata1/TV%20Series/English/  
+Link: http://server1.timepassbd.com/ftpdata1/TV%20Series/  
+Link: http://fromv.ir/vip/Series/Ongoing/  
+Link: http://fromv.ir/vip/Series/Complete/  
+Link: http://fromv.ir/vip/Anime/  
+Link: http://79.127.126.110/Serial/  
+Link: http://fromv.ir/East/Korea/  
+Link: http://dl2.hexdownload.net/up/Movie/Series/  
+Link: http://dl.upload8.net/Serial/  
+Link: http://avadl.uploadt.com/New2/Serial/  
+Link: http://dl2.mihanpix.com/Film/  
+Link: http://dl.my-film.in/Movie/  
+Link: http://1.2myfilmia.ir/Film/  
+Link: http://dl.funsaber.net/animation/  
+Link: http://dl.funsaber.net/movie/  
+Link: http://dl.royamovie.com/Movie  
+Link: http://dl.funsaber.net/Collection/  
+Link: http://dl2.my98music.com/Data/Film/  
+Link: http://dl2.my98music.com/Data/Movie/  
+Link: http://dl.par30dl.com/  
+Link: http://cloud.jaymoon.net/movie/  
+Link: http://d2.bi-seda.ir/Animation/  
+Link: http://d2.bi-seda.ir/Films/  
+Link: http://dl.mojoo.ir/upload/film/Animations/  
+Link: http://dl.mojoo.ir/upload/film/movies/  
+Link: http://dl8.downloadoo.ir/Movie/  
+Link: http://server1.timepassbd.com/ftpdata1/Movies/  
+Link: http://server1.timepassbd.com/ftpdata1/  
+Link: http://fromv.ir/vip/Animation  
+Link: http://fromv.ir/vip/Movie/  
+Link: http://103.66.178.220/ftp/HDD2/Hindi%20Movies/  
+Link: http://103.66.178.220/ftp/HDD2/  
+Link: http://103.66.178.220/ftp/HDD1/  
+Link: http://103.67.198.6/uploaded-videos/?C=M;O=D  
+Link: http://ftp.newtek.com/multimedia/movies/  
+Link: http://dl3.vaiomusic.org/Movie/  
+Link: http://79.127.126.110/Film/  
+Link: http://dl2.hexdownload.net/up/Movie/  
+Link: http://dl2.heyserver.in/film/  
+Link: http://pz10093.parspack.net/Films/  
+Link: http://dlst18.xyz/dl/vip/film/3/  
+Link: http://avadl.uploadt.com/New2/Film/  
