@@ -60,8 +60,15 @@ def config():
     os.system('xfconf-query -c xfwm4 -p /general/theme -s "McOS-MJV-Dark-XFCE-Edition-2.3"')
     os.system('xfconf-query -c xfwm4 -p /general/inactive_opacity -s "100"')
     # Configure Thunar
-    os.system('xfconf-query -c thunar -p /misc-volume-management/last-view -s "ThunarIconView"')
-    os.system('xfconf-query -c thunar -p /misc-volume-management/last-location-bar -s "ThunarLocationButtons"')
+    os.system('xfconf-query -c thunar -p /last-view -s "ThunarIconView"')
+    os.system('xfconf-query -c thunar -p /last-location-bar -s "ThunarLocationButtons"')
+    # Configure Desktop
+    os.system('xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/workspace0/last-image -s "/usr/share/xfce4/backdrops/xubuntu-development.png"')
+    os.system('xfconf-query -c xfce4-desktop -p /desktop-icons/file-icons/show-filesystem -s "false"')
+    os.system('xfconf-query -c xfce4-desktop -p /desktop-icons/file-icons/show-removable -s "false"')
+    os.system('xfconf-query -c xfce4-desktop -p /desktop-icons/style -s "2"')
+    
+    # Configure Panel
     #os.system('xfconf-query -c xfce4-panel -p /panels/panel-0 -s "ThunarLocationButtons"') # Ignore it. Don't Uncomment
 
 def main():
