@@ -65,7 +65,7 @@ def config():
                         'Hidden=false'
                         ]
     # Directory Location
-    dr = "~/.config/autostart/"
+    dr = home + "/.config/autostart/"
     if not os.path.exists(dr):
         os.makedirs(dr)
     plank_location = dr + 'Plank.desktop'
