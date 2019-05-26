@@ -37,7 +37,7 @@ def themes():
     os.system('cp assets/McOS.tar.gz ~/.themes/ && tar -xf ~/.themes/McOS.tar.gz -C ~/.themes/') # Copy and extract the tarbal to .themes directory
 
     # Clean Current Working Directory
-    os.system('rm ~/.icons/McOS.tar.gz ~/.themes/FLat-Remix.tar.xz')
+    os.system('rm ~/.themes/McOS.tar.gz ~/.icons/FLat-Remix.tar.xz')
 
 def config():
     """
@@ -61,6 +61,10 @@ def config():
     os.system('xfconf-query -c xfwm4 -p /general/inactive_opacity -s "100"')
     # Configure Thunar
     os.system('xfconf-query -c thunar -p /last-view -s "ThunarIconView"')
+    os.system('xfconf-query -c thunar -p /last-icon-view-zoom-level -s "THUNAR_ZOOM_LEVEL_NORMAL"')
+    os.system('xfconf-query -c thunar -p /last-show-hidden -s "false"')
+    os.system('xfconf-query -c thunar -p /last-menubar-visible -s "true"')
+    os.system('xfconf-query -c thunar -p /last-statusbar-visible -s "true"')
     os.system('xfconf-query -c thunar -p /last-location-bar -s "ThunarLocationButtons"')
     # Configure Desktop
     os.system('xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/workspace0/last-image -s "/usr/share/xfce4/backdrops/xubuntu-development.png"')
