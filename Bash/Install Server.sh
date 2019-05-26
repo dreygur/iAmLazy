@@ -1,18 +1,18 @@
 #!/usr/bin/bash
 
-
+#
 # This Script somehow can configure my xfce4-de
 # as I love to see.
 # This is a part of my `iAmLazy` project
 # Please push some bug-fix and help me to be lazy as always :)
 # @dreygur (Rakibul Yeasin)
-
+#
 # 22:05:2019 02:41:AM THURSDAY
+#
 
 
 echo -e "Hello $(whoami),\nHow do you feel?\n"
 echo -e "Updating the System..."
-
 
 # Update the system first
 sudo apt update -y # Updating
@@ -62,12 +62,9 @@ xfconf-query -c xfwm4 -p /general/inactive_opacity -s "100"
 # Configure Thunar
 xfconf-query -c thunar -p /last-view -s "ThunarIconView"
 xfconf-query -c thunar -p /last-icon-view-zoom-level -s "THUNAR_ZOOM_LEVEL_NORMAL"
-xfconf-query -c thunar -p /last-show-hidden -s "false"
-xfconf-query -c thunar -p /last-menubar-visible -s "true"
-xfconf-query -c thunar -p /last-statusbar-visible -s "true"
 xfconf-query -c thunar -p /last-location-bar -s "ThunarLocationButtons"
 # Configure Desktop
-xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/workspace0/last-image -s "/usr/share/xfce4/backdrops/xubuntu-development.png"
+xfconf-query -c xfce4-desktop -p --create /backdrop/screen0/monitor0/workspace0/last-image -s "/usr/share/xfce4/backdrops/xubuntu-development.png"
 xfconf-query -c xfce4-desktop -p /desktop-icons/file-icons/show-filesystem -s "false"
 xfconf-query -c xfce4-desktop -p /desktop-icons/file-icons/show-removable -s "false"
 xfconf-query -c xfce4-desktop -p /desktop-icons/style -s "2"
