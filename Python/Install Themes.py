@@ -52,10 +52,17 @@ def config():
     os.system('sudo add-apt-repository ppa:ricotz/docky -y') # Add the plank ppa to repository list
     os.system('sudo apt-get update -y && sudo apt-get install plank -y') # Update the apt cache and install Plank
     
-    # Copy xfce4 presets to .config
-    os.system('sudo cp -rf ./config/xfce4 ~/.config')
-    # Copy Plank setting to .config
-    os.system('sudo cp -rf ./config/plank ~/.config')
+    # Configure Theme
+    os.system('xfconf-query -c xsettings -p /Net/ThemeName -s "McOS-MJV-Dark-XFCE-Edition-patched-2.3"')
+    # Configure Icon
+    os.system('xfconf-query -c xsettings -p /Net/IconThemeName -s "Flat-Remix-Blue-Dark"')
+    # Configure Window manager
+    os.system('xfconf-query -c xfwm4 -p /general/theme -s "McOS-MJV-Dark-XFCE-Edition-2.3"')
+    os.system('xfconf-query -c xfwm4 -p /general/inactive_opacity -s "100"')
+    # Configure Thunar
+    os.system('xfconf-query -c thunar -p /misc-volume-management/last-view -s "ThunarIconView"')
+    os.system('xfconf-query -c thunar -p /misc-volume-management/last-location-bar -s "ThunarLocationButtons"')
+    #os.system('xfconf-query -c xfce4-panel -p /panels/panel-0 -s "ThunarLocationButtons"') # Ignore it. Don't Uncomment
 
 def main():
     """
@@ -65,7 +72,7 @@ def main():
     """
 
     try:
-        print('Hello %s,\nHow do you feel?\n', os.system('whoami'))
+        print('Hello User,\nHow do you feel?\n')
         print('Installing GTK3.0 and Icon themes.\nBe patient...')
         themes()
         print('\nThemes installed.\nTweaking your Desktop Environment...')
