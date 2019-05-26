@@ -42,8 +42,6 @@ def themes():
 def config():
     """
         Configuring XFCE4 to run on user defined settings
-        As xfce4 doesn't have a cli yet I made some configuration files as needed
-        The files will be copied to `/home/usr/.config`
     """
     # Before Configuring we should update the apt cache
     #os.system('sudo apt update -y')
