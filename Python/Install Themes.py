@@ -46,14 +46,14 @@ def config():
         The files will be copied to `/home/usr/.config`
     """
     # Before Configuring we should update the apt cache
-    os.system('sudo apt update -y')
+    #os.system('sudo apt update -y')
 
     # Install Plank dock
     os.system('sudo add-apt-repository ppa:ricotz/docky -y') # Add the plank ppa to repository list
     os.system('sudo apt-get update -y && sudo apt-get install plank -y') # Update the apt cache and install Plank
     
     # Configure Theme
-    os.system('xfconf-query -c xsettings -p /Net/ThemeName -s "McOS-MJV-Dark-XFCE-Edition-patched-2.3"')
+    os.system('xfconf-query -c xsettings -p /Net/ThemeName -s "McOS-MJV-Dark-XFCE-Edition-2.3"')
     # Configure Icon
     os.system('xfconf-query -c xsettings -p /Net/IconThemeName -s "Flat-Remix-Blue-Dark"')
     # Configure Window manager
