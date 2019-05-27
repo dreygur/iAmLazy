@@ -88,7 +88,7 @@ def config():
     os.system('xfconf-query -c thunar -p /last-icon-view-zoom-level -s "THUNAR_ZOOM_LEVEL_NORMAL"')
     os.system('xfconf-query -c thunar -p /last-location-bar -s "ThunarLocationButtons"')
     # Configure Desktop
-    os.system('xfconf-query -c xfce4-desktop -p --create /backdrop/screen0/monitor0/workspace0/last-image -s "/usr/share/xfce4/backdrops/xubuntu-development.png"')
+    os.system('xfconf-query -c xfce4-desktop --create -p /backdrop/screen0/monitor0/workspace0/last-image -s "/usr/share/xfce4/backdrops/xubuntu-development.png"')
     os.system('xfconf-query -c xfce4-desktop -p /desktop-icons/file-icons/show-filesystem -s "false"')
     os.system('xfconf-query -c xfce4-desktop -p /desktop-icons/file-icons/show-removable -s "false"')
     os.system('xfconf-query -c xfce4-desktop -p /desktop-icons/style -s "2"')
