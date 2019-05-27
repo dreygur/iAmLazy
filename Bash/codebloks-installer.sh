@@ -12,11 +12,13 @@ install() {
         sudo add-apt-repository ppa:damien-moore/codeblocks-stable -y
         echo -e "PPA Added...\nUpdating Cache..."
         sudo apt-get update
-        echo -e "Fetching Pachage from server..."
+        echo -e "Fetching Package from server..."
         sudo apt-get install codeblocks codeblocks-contrib -y
 
         if [[ -n $( dpkg -l | grep "codeblocks" ) ]]; then
             echo -e "Succesfully installed Code::Blocks IDE..."
+        else
+            echo -e "Something happend while installing Code::Blocks...\Please Retry..."
         fi
     else
         echo "Code::Blocks IDE is already installed..."
