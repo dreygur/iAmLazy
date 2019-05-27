@@ -17,4 +17,6 @@ echo -e $ME $SPEECH
 - Think
 
 ### Done
-- Nothing
+- Added Code::Blocks Installer
+- Added Theme Customizer on XFCE (Debian)
+- Added CI (git)
