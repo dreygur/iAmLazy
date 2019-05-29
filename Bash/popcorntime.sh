@@ -20,7 +20,7 @@ sudo ln -sf /opt/popcorntime/Popcorn-Time /usr/bin/Popcorn-Time
 echo -e "Setting up Desktop Entry..."
 echo "[Desktop Entry]
 Version = 1.0
-Type = Multimedia
+Type = Application
 Terminal = false
 Name = Popcorn Time
 Exec = /usr/bin/Popcorn-Time
