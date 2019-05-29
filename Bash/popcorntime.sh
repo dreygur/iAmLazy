@@ -7,7 +7,7 @@
 echo -e "Updating..."
 sudo apt update
 echo -e "Configuring..."
-sudo apt install libcanberra-gtk-module libgconf-2-4
+sudo apt install -y libcanberra-gtk-module libgconf-2-4
 
 echo -e "Downloading the Package..."
 wget "https://get.popcorntime.sh/build/Popcorn-Time-0.3.10-Linux-64.tar.xz" -O popcorntime.tar.xz
