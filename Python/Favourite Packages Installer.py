@@ -1,16 +1,19 @@
 #!usr/bin/python3
 
 """
-#   Installer for my favourite packages
-#   of debian based distro.
-#   It's a helper for me
-#   if i somehow destroy my system (it happens to me)
-#   Then I would be able to automate the
-#   boring staffs.
-#   Author: Rakibul Yeasin (Totul)
-#   FB: https://www.facebook.com/rakibul03
-#
-#   ***Not Licensed***
+    Installer for my favourite packages
+    of debian based distro.
+    Supports:
+        * Debian
+        * Arch (Not Yet)
+    It's a helper for me
+    if i somehow destroy my system (it happens to me)
+    Then I would be able to automate the
+    boring staffs.
+    Author: Rakibul Yeasin (Totul)
+    FB: https://www.facebook.com/rakibul03
+
+    ***Not Licensed***
 """
 
 import sys
@@ -26,8 +29,7 @@ class Primary():
         system('sudo apt install -y software-properties-common')
         system('sudo apt install -y python-software-properties')
         update()
-        #   Install vim and other primary packages.
-        #   Installs Vim, Gdebi, GParted, Synaptic
+        #   Installs Vim, gDebi, GParted, Synaptic
         system('sudo apt install -y git git-core')
         system('sudo apt install -y vim gdebi gparted synaptic')
         system('sudo apt install -y curl php5-curl')

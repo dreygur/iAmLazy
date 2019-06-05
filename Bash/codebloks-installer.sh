@@ -18,7 +18,7 @@ install() {
         if [[ -n $( dpkg -l | grep "codeblocks" ) ]]; then
             echo -e "Succesfully installed Code::Blocks IDE..."
         else
-            echo -e "Something happend while installing Code::Blocks...\Please Retry..."
+            echo -e "Something happend while installing Code::Blocks...\nPlease Retry..."
         fi
     else
         echo "Code::Blocks IDE is already installed..."

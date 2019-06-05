@@ -4,12 +4,12 @@
 # For Mamun(Shanto)
 
 
-echo -e "Updating..."
+echo "Updating..."
 sudo apt update
-echo -e "Configuring..."
+echo "Configuring..."
 sudo apt install -y libcanberra-gtk-module libgconf-2-4
 
-echo -e "Downloading the Package..."
+echo "Downloading the Package..."
 wget "https://get.popcorntime.sh/build/Popcorn-Time-0.3.10-Linux-64.tar.xz" -O popcorntime.tar.xz
 
 sudo mkdir /opt/popcorntime
@@ -17,7 +17,7 @@ sudo tar -xf popcorntime.tar.xz -C /opt/popcorntime
 
 sudo ln -sf /opt/popcorntime/Popcorn-Time /usr/bin/Popcorn-Time
 
-echo -e "Setting up Desktop Entry..."
+echo "Setting up Desktop Entry..."
 echo "[Desktop Entry]
 Version = 1.0
 Type = Application

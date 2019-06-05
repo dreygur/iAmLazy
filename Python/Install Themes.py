@@ -7,24 +7,62 @@
     Please push some bug-fix and help me to be lazy as always :)
     @dreygur (Rakibul Yeasin)
 
+    Supports:
+        * Debian
+        * Arch
+
     22:05:2019 02:41:AM THURSDAY
 """
 
 import sys
 import os
 import subprocess
+import platform as ptm
 
 home = os.environ["HOME"]
+
+def check():
+    """
+        Checks Current Platform
+        whether it is Debian or Arch based
+        Supported Distro's are:
+            'SuSE', 'debian', 'fedora', 'redhat',
+            'centos', 'mandrake', 'mandriva', 'rocks',
+            'slackware', 'yellowdog', 'gentoo',
+            'UnitedLinux', 'turbolinux', 'arch',
+            'mageia', 'Ubuntu'
+    """
+
+    # Checks Distribution Name
+    dist_name = ptm.dist()[0]
+    debian = ['debian', 'Ubuntu']
+    arch = ['arch']
+
+    if dist_name in debian:
+        return 'debian'
+    elif dist_name in arch:
+        return 'arch'
+
+def update():
+    operating_system = check()
+
+    if operating_system == 'debian':
+        # Update the system first
+        os.system('sudo apt-get -y update') # Updating
+        # Then Upgrade to have everything working
+        os.system('sudo apt-get -y upgrade') # Upgrading
+    elif operating_system == 'arch':
+        # Update and upgrade the system first
+        os.system('sudo pacman -Syu') # Updating
 
 def themes():
     """
         Installs GTK and Icon themes on XFCE4
         And tweaks some settings
     """
+
     # Update the system first
-    os.system('sudo apt update -y') # Updating
-    # Then Upgrade to have everything working
-    os.system('sudo apt upgrade -y') # Upgrading
+    update() # Calls the Update Function and does the rest
 
     # Now try to create theme folder
     if not os.path.exists(home + '/.themes'): # Check if the directory already available or not
@@ -45,24 +83,26 @@ def config():
     """
         Configuring XFCE4 to run on user defined settings
     """
-    # Before Configuring we should update the apt cache
-    #os.system('sudo apt update -y')
 
     # Install Plank dock
-    os.system('sudo add-apt-repository ppa:ricotz/docky -y') # Add the plank ppa to repository list
-    os.system('sudo apt-get update -y && sudo apt-get install plank -y') # Update the apt cache and install Plank
+    if check() == 'debian':
+        os.system('sudo add-apt-repository ppa:ricotz/docky -y') # Add the plank ppa to repository list
+        os.system('sudo apt-get update -y && sudo apt-get install -y plank') # Update the apt cache and install Plank
+    elif check() == 'arch':
+        pass
+    
     # Plank Desktop Entry
     autostart_plank = ['[Desktop Entry]',
-                        'Encoding=UTF-8',
-                        'Version=0.9.4',
-                        'Type=Application',
-                        'Name=Plank',
-                        'Comment=Plank Dock',
-                        'Exec=/usr/bin/plank',
-                        'OnlyShowIn=XFCE;',
-                        'StartupNotify=false',
-                        'Terminal=false',
-                        'Hidden=false'
+                        'Encoding = UTF-8',
+                        'Version = 0.9.4',
+                        'Type = Application',
+                        'Name = Plank',
+                        'Comment = Plank Dock',
+                        'Exec = /usr/bin/plank',
+                        'OnlyShowIn = XFCE;',
+                        'StartupNotify = false',
+                        'Terminal = false',
+                        'Hidden = false'
                         ]
     # Directory Location
     dr = home + "/.config/autostart/"
@@ -86,7 +126,7 @@ def config():
     # Configure Thunar
     os.system('xfconf-query -c thunar -p /last-view -s "ThunarIconView"')
     os.system('xfconf-query -c thunar -p /last-icon-view-zoom-level -s "THUNAR_ZOOM_LEVEL_NORMAL"')
-    os.system('xfconf-query -c thunar -p /last-location-bar -s "ThunarLocationButtons"')
+    os.system('xfconf-query -c thunar --create -p /last-location-bar -s "ThunarLocationButtons"')
     # Configure Desktop
     os.system('xfconf-query -c xfce4-desktop --create -p /backdrop/screen0/monitor0/workspace0/last-image -s "/usr/share/xfce4/backdrops/xubuntu-development.png"')
     os.system('xfconf-query -c xfce4-desktop -p /desktop-icons/file-icons/show-filesystem -s "false"')
@@ -94,7 +134,7 @@ def config():
     os.system('xfconf-query -c xfce4-desktop -p /desktop-icons/style -s "2"')
     
     # Configure Panel
-    #os.system('xfconf-query -c xfce4-panel -p /panels/panel-0 -s "ThunarLocationButtons"') # Ignore it. Don't Uncomment
+    #os.system('xfconf-query -c xfce4-panel --create -p /panels/panel-0 -s "ThunarLocationButtons"') # Ignore it. Don't Uncomment
 
 def main():
     """
