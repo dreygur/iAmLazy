@@ -9,7 +9,7 @@
 
     Supports:
         * Debian
-        * Arch
+        * Arch (Still not)
 
     22:05:2019 02:41:AM THURSDAY
 """
