@@ -1,4 +1,4 @@
 bin*
 inputs/*
 src/*
-expected/*
+./Bash/Detect\ Current\ OS.sh
