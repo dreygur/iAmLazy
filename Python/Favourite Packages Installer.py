@@ -17,12 +17,17 @@
 """
 
 import sys
+import subprocess
 from os import system, remove, getcwd
 # from lsb_release import get_lsb_information
 #   TO-DO: Implementaion of LAMP Installation from Maateen of make it myself
 
 class Primary():
     """ This Class is for installation of the primary packages """
+
+    def __init__(self):
+        # Class Initialization
+        pass
 
     def primary(self):
         #   This will install add-apt-repository
@@ -55,6 +60,10 @@ class Primary():
 class Media():
     """ Class for Media Players """
 
+    def __init__(self):
+        # Class Initialization
+        pass
+
     def rhythmbox(self):
         #   Rhythnbox - Music Player
         system('sudo add-apt-repository ppa:fossfreedom/rhythmbox -y')
@@ -69,6 +78,10 @@ class Media():
 
 class Browser():
     """ This Class is for installation of the Browsers I Need """
+
+    def __init__(self):
+        # Class Initialization
+        pass
 
     def chrome(self):
         #   Installs Google Chrome
@@ -90,8 +103,12 @@ class Browser():
 class IDE():
     """ This Class is for installation of the IDE's I Love to use """
 
+    def __init__(self):
+        # Class Initialization
+        pass
+
     def vscode(self):
-        #   Installs Microsoft Visual Stusio Code
+        # Installs Microsoft Visual Studio Code
         # Download Deb Package
         system('wget -O vscode.deb https://go.microsoft.com/fwlink/?LinkID=760868')
         # Install vscode
@@ -100,7 +117,7 @@ class IDE():
         system('rm vscode.deb')
 
     def subl(self):
-        #   Installs Sublime Text-3 Stable
+        # Installs Sublime Text-3 Stable
         # Install the GPG Key
         system('wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -')
         # Ensure apt is set up to work with https sources
@@ -114,13 +131,17 @@ class IDE():
 class ZSH():
     """ This Class is for installing and configuring zsh shell """
 
+    def __init__(self):
+        # Class Initialization
+        pass
+
     def install(self):
         # Installs ZSH Shell
         system('sudo apt-get install zsh -y')
         # Changes Default shell to zsh from bash
 
     def custom_zsh(self):
-        #   Installs and customize zsh shell
+        # Installs and customize zsh shell
         _current_directory = getcwd()
         # Downloads and Copies oh-my-zsh plugin
         system('sudo rm -rf ~/.oh-my-zsh')
@@ -129,7 +150,7 @@ class ZSH():
         system('sudo cp ' + _current_directory + '/.zshrc ~/')
 
     def zsh_fonts(self):
-        #   Installs the required pakages for oh_my_zsh
+        # Installs the required pakages for oh_my_zsh
         # Installs powerlevel9k theme
         system('git clone https://github.com/bhilburn/powerlevel9k.git \
                 ~/.oh-my-zsh/custom/themes/powerlevel9k')
@@ -159,29 +180,33 @@ def update():
     #   This function will download the package lists from the repositories and
     #   "update" them to get information on the newest versions of packages and
     #   their dependencies.
-    system('sudo apt-get update')
+    system('sudo apt-get -y update')
 
 def banner():
     #   Banner for the script
     text = """
     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
     \tHello {0}, Welcome!!!
-    \tAuthor: Rakibul Yeasin (Totul)
-    \tFB: https://www.facebook.com/rytotul
-    \tGithub: https://www.github.com/rytotul
+    \tAuthor: Rakibul Yeasin
+    \tFB: https://www.facebook.com/dreygur
+    \tGithub: https://www.github.com/dreygur
     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
     """
-    """ 
-    system('whoami > tmp')
-    uname = open('tmp', 'r').read()
-    remove('tmp') """
-    uname = system('grep "^${USER}:" /etc/passwd | cut -d: -f5')
-    print(text.format(uname))
+
+    #uname = system('grep "^${USER}:" /etc/passwd | cut -d: -f5')
+    uname = subprocess.getoutput('whoami')
+    print(text.format(uname.title()))
 
 def main():
-    #   The main Function
+    """
+        And here comes the tradition MAIN function :)
+        Though we don't need it But It's a tradition
+        So, I just abided by...
+    """
+
     banner()
     permission = str(input('Are you ready to install??? (Y/n) ')).lower()
+
     if permission == 'y':
         try:
             print('Installing Primary Packages...\n')
@@ -216,6 +241,7 @@ def main():
             print('"Rhythbox" installed.')
         except:
             print('Sorry, Something went wrong!\nMedia Player installation Failed.')
+
         try:
             print('Installing IDE\'s')
             ide = IDE()
@@ -226,6 +252,7 @@ def main():
             print('"Microsoft VSCode" installed.')
         except:
             print('Sorry, Something went wrong!\nIDE installation Failed.')
+
         try:
             print('Installing ZSH...')
             zsh = ZSH()
@@ -237,11 +264,13 @@ def main():
 
         print('Succefully Installed. Enjoy!!!!\nPlease "reboot" the system now.')
         _restart = str(input('Restart now? (Y/n) ')).lower()
+
         if _restart == 'y':
             system('reboot')
         else:
             print('Exiting...\n')
-            sys.exit()
+            sys.exit(1)
+
     else:
         print('You Choose to Exit. Exiting....\n')
 
@@ -250,4 +279,7 @@ if __name__ == '__main__':
         main()
     except KeyboardInterrupt:
         print("You choose to exit.\nExiting...")
-        sys.exit()
+        sys.exit(0)
+
+
+# End of Code :(
