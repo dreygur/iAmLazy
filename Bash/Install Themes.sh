@@ -17,6 +17,19 @@ GREEN='\033[0m\033[1;32m'
 RED='\033[0m\033[1;31m'
 END='\033[0m'
 
+# Desktop Entrie
+PLANK_DESKTOP_ENTRY="[Desktop Entry]
+Encoding=UTF-8
+Version=0.11.4
+Type=Application
+Name=Plank
+Comment=Plank Dock
+Exec=/usr/bin/plank
+OnlyShowIn=XFCE;
+StartupNotify=false
+Terminal=false
+Hidden=false"
+
 # Banner
 echo -e "$GREEN
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
@@ -49,8 +62,6 @@ distro () {
                 DISTRO_NAME='fedora'
             elif echo $DISTRO_STR | grep -q ['arch','manjaro','antergos','parabola','anarchy']; then
                 DISTRO_NAME='arch'
-            elif echo $DISTRO_STR | grep -q ['redhat','suse','centos']; then
-                DISTRO_NAME='redhat'
             fi
             break
         fi
@@ -75,18 +86,30 @@ themes () {
     # Theme installer
     # Need to Implement downloading feature
     # But, the download link is temporary :(
+    
+    DIR="./Python/assets"
 
-    mkdir $HOME/.themes
-    mkdir $HOME/.icons
+    # Checks if the Script is running from the parent folder or not
+    if [[ `pwd` =~ 'Bash' ]]; then
+        DIR='../Python/assets'
+    fi
+
+    if [[ ! -e $HOME/.themes ]]; then
+        mkdir $HOME/.themes
+    fi
+
+    if [[ ! -e $HOME/.icons ]]; then
+        mkdir $HOME/.icons
+    fi
 
     # Download Icon-Pack
     # wget -O Flat-Remix.tar.xz
-    cp ../Python/assets/Flat-Remix.tar.xz $HOME/.icons/
+    cp $DIR/Flat-Remix.tar.xz $HOME/.icons/
     tar -xf $HOME/.icons/Flat-Remix.tar.xz -C $HOME/.icons/
 
     # Download xfce4 theme
     # wget -O McOS.tar.gz
-    cp ../Python/assets/McOS.tar.gz $HOME/.themes/
+    cp $DIR/McOS.tar.gz $HOME/.themes/
     tar -xf $HOME/.themes/McOS.tar.gz -C $HOME/.themes/
     # Clean the Directory
     rm $HOME/.themes/McOS.tar.gz $HOME/.icons/Flat-Remix.tar.xz
@@ -95,30 +118,20 @@ themes () {
 install_plank () {
     # Install Plank
 
-    echo "Installing Plank"
+    echo "Installing Plank...\n"
     if [[ `distro` == 'debian' ]]; then
         sudo add-apt-repository ppa:ricotz/docky -y
         sudo apt-get update -y
         sudo apt-get install -y plank
     elif [[ `distro` == 'arch' ]]; then
         sudo pacman -Syu plank --noconfirm
-    elif [[ `distro` == 'redhat' ]]; then
+    elif [[ `distro` == 'fedora' ]]; then
         sudo yum update -y
         sudo yum install -y plank
     fi
 
     echo "Preparing Plank to autostart..."
-    echo "[Desktop Entry]
-    Encoding=UTF-8
-    Version=0.11.4
-    Type=Application
-    Name=Plank
-    Comment=Plank Dock
-    Exec=/usr/bin/plank
-    OnlyShowIn=XFCE;
-    StartupNotify=false
-    Terminal=false
-    Hidden=false" | sudo tee -a $HOME/.config/autostart/Plank.desktop
+    sudo tee $HOME/.config/autostart/Plank.desktop <<< "$PLANK_DESKTOP_ENTRY"
 }
 
 xfce4_config () {
@@ -148,7 +161,7 @@ xfce4_config () {
 echo -e "Hello ${RED}`whoami`${END},\nHow do you feel???\n"
 echo -e "Installing GTK3.0 and Icon themes.\nBe patient..."
 themes
-echo -e "\nThemes installed.\nTweaking your Desktop Environment..."
+echo -e "\nThemes installed.\nTweaking your Desktop Environment...\n"
 # Installing Plank
 install_plank
 if [[ `de` == 'xfce4' ]]; then
