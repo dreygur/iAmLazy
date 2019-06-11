@@ -9,6 +9,7 @@
 # Supports:
 #     * Debian
 #     * Arch
+#     * Fedora
 #
 # 05:06:2019 02:41:AM WEDNESDAY
 
@@ -46,7 +47,7 @@ echo -e "$GREEN
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 $END"
 
-distro () {
+function distro () {
     # Distro detector
     # Detects Currently Installed Distribution
 
@@ -76,12 +77,13 @@ distro () {
     echo $DISTRO_NAME
 }
 
-de () {
+function de () {
     # Desktop Environment Detector
+    # Till now it doesn't work
     echo 'xfce4'
 }
 
-themes () {
+function themes () {
     # Theme installer
     # Need to Implement downloading feature
     # But, the download link is temporary :(
@@ -89,10 +91,18 @@ themes () {
     DIR="."
 
     # Checks if the Script is running from the parent folder or not
+    # And then decides to download the required packs or not
     if [[ `pwd` =~ 'Bash' ]]; then
         DIR='../Python/assets'
     elif [[ `pwd` =~ 'iAmLazy' ]]; then
         DIR="./Python/assets"
+    else
+        # Download Icon-Pack
+        wget -O Flat-Remix.tar.xz "https://github.com/dreygur/iAmLazy/raw/master/Python/assets/Flat-Remix.tar.xz"
+        # Download xfce4 theme
+        wget -O McOS.tar.gz "https://github.com/dreygur/iAmLazy/raw/master/Python/assets/McOS.tar.gz"
+        # Downloads Walpaper
+        wget -O xubuntu-development.png "https://github.com/dreygur/iAmLazy/raw/master/Python/assets/xubuntu-development.png"
     fi
 
     if [[ ! -e $HOME/.themes ]]; then
@@ -103,20 +113,25 @@ themes () {
         mkdir $HOME/.icons
     fi
 
-    # Download Icon-Pack
-    wget -O Flat-Remix.tar.xz "https://github.com/dreygur/iAmLazy/raw/master/Python/assets/Flat-Remix.tar.xz"
+    # Installs Flat-Remix icon pack
     cp -f $DIR/Flat-Remix.tar.xz $HOME/.icons/
     tar -xf $HOME/.icons/Flat-Remix.tar.xz -C $HOME/.icons/
 
-    # Download xfce4 theme
-    wget -O McOS.tar.gz "https://github.com/dreygur/iAmLazy/raw/master/Python/assets/McOS.tar.gz"
+    # Installs McOS-Dark Theme
     cp -f $DIR/McOS.tar.gz $HOME/.themes/
     tar -xf $HOME/.themes/McOS.tar.gz -C $HOME/.themes/
-    # Clean the Directory
-    rm $HOME/.themes/McOS.tar.gz $HOME/.icons/Flat-Remix.tar.xz
+
+    # The Walpaper
+    cp $DIR/xubuntu-development.png /usr/share/xfce4/backdrops/
+
+    # Clean the Directories
+    if [[ $DIR == '.' ]]; then
+        rm McOS.tar.gz Flat-Remix.tar.xz
+    fi
+    rm $HOME/.themes/McOS.tar.gz $HOME/.icons/Flat-Remix.tar.xz $DIR/xubuntu-development.png
 }
 
-install_plank () {
+function install_plank () {
     # Install Plank
 
     echo -e "Installing Plank...\n"
@@ -135,7 +150,7 @@ install_plank () {
     sudo tee $HOME/.config/autostart/Plank.desktop <<< "$PLANK_DESKTOP_ENTRY"
 }
 
-xfce4_config () {
+function xfce4_config () {
     # Configure Theme
     xfconf-query -c xsettings -p /Net/ThemeName -s "McOS-MJV-Dark-XFCE-Edition-2.3"
 
@@ -149,13 +164,22 @@ xfce4_config () {
     # Configure Thunar
     xfconf-query -c thunar -p /last-view -s "ThunarIconView"
     xfconf-query -c thunar -p /last-icon-view-zoom-level -s "THUNAR_ZOOM_LEVEL_NORMAL"
-    xfconf-query -c thunar --create -p /last-location-bar -s "ThunarLocationButtons"
+    xfconf-query -c thunar -p /last-location-bar -s "ThunarLocationButtons"
     
     # Configure Desktop
     xfconf-query -c xfce4-desktop --create -p /backdrop/screen0/monitor0/workspace0/last-image -s "/usr/share/xfce4/backdrops/xubuntu-development.png"
     xfconf-query -c xfce4-desktop -p /desktop-icons/file-icons/show-filesystem -s "false"
     xfconf-query -c xfce4-desktop -p /desktop-icons/file-icons/show-removable -s "false"
     xfconf-query -c xfce4-desktop -p /desktop-icons/style -s "2"
+
+    # Configure Panel
+    xfconf-query -c xfce4-panel -p /panels/panel-0/position -s "p=6;x=0;y=0"
+    xfconf-query -c xfce4-panel -p /panels/panel-0/length -t "uint" -s "100"
+    xfconf-query -c xfce4-panel -p /panels/panel-0/position-locked -t "bool" -s "true"
+
+    # Arrange Icons & Reload the Desktop
+    xfdesktop --arrange
+    xfdesktop --reload
 }
 
 
@@ -169,4 +193,10 @@ if [[ `de` == 'xfce4' ]]; then
     xfce4_config
 fi
 echo -e "\nDone!!!\nCan you please thank me?! :(\n"
+echo -e "You better reboot your system now.\nShould I do it for you? [Y/n]\n"
+read confirmaton
+if [[ ${confirmaton,,} == 'y' ]]; then
+    echo -e "Rebooting...\n"
+    sleep 3; reboot
+fi
 exit
