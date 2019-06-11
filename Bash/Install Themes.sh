@@ -66,14 +66,13 @@ distro () {
             break
         fi
     done
-    # plain arch installation doesn't guarantee /etc/os-release
+    # plain-arch installation doesn't guarantee /etc/os-release
     # but the filesystem pkg installs a blank /etc/arch-release
     if [ -z "$DISTRO_NAME" ]; then
         if [ -e /etc/arch-release ]; then
         DISTRO_NAME='arch'
         fi
     fi
-    # TODO: if os is not detected, try package-manager detection (not 100% reliable)
     echo $DISTRO_NAME
 }
 
@@ -87,11 +86,13 @@ themes () {
     # Need to Implement downloading feature
     # But, the download link is temporary :(
     
-    DIR="./Python/assets"
+    DIR="."
 
     # Checks if the Script is running from the parent folder or not
     if [[ `pwd` =~ 'Bash' ]]; then
         DIR='../Python/assets'
+    elif [[ `pwd` =~ 'iAmLazy' ]]; then
+        DIR="./Python/assets"
     fi
 
     if [[ ! -e $HOME/.themes ]]; then
@@ -103,13 +104,13 @@ themes () {
     fi
 
     # Download Icon-Pack
-    # wget -O Flat-Remix.tar.xz
-    cp $DIR/Flat-Remix.tar.xz $HOME/.icons/
+    wget -O Flat-Remix.tar.xz "https://github.com/dreygur/iAmLazy/raw/master/Python/assets/Flat-Remix.tar.xz"
+    cp -f $DIR/Flat-Remix.tar.xz $HOME/.icons/
     tar -xf $HOME/.icons/Flat-Remix.tar.xz -C $HOME/.icons/
 
     # Download xfce4 theme
-    # wget -O McOS.tar.gz
-    cp $DIR/McOS.tar.gz $HOME/.themes/
+    wget -O McOS.tar.gz "https://github.com/dreygur/iAmLazy/raw/master/Python/assets/McOS.tar.gz"
+    cp -f $DIR/McOS.tar.gz $HOME/.themes/
     tar -xf $HOME/.themes/McOS.tar.gz -C $HOME/.themes/
     # Clean the Directory
     rm $HOME/.themes/McOS.tar.gz $HOME/.icons/Flat-Remix.tar.xz
@@ -118,7 +119,7 @@ themes () {
 install_plank () {
     # Install Plank
 
-    echo "Installing Plank...\n"
+    echo -e "Installing Plank...\n"
     if [[ `distro` == 'debian' ]]; then
         sudo add-apt-repository ppa:ricotz/docky -y
         sudo apt-get update -y

@@ -51,7 +51,7 @@ class Primary():
         #   The replacement of Microsoft Office
         system('sudo add-apt-repository ppa:libreoffice/ppa -y')
         update()
-        system('sudo apt install fonts-opensymbol libreoffice-avmedia-backend-gstreamer \
+        system('sudo apt install -y fonts-opensymbol libreoffice-avmedia-backend-gstreamer \
                 libreoffice-base-core libreoffice-calc libreoffice-common libreoffice-core \
                 libreoffice-draw libreoffice-gnome libreoffice-gtk2 libreoffice-help-en-us \
                 libreoffice-impress libreoffice-math libreoffice-ogltrans libreoffice-pdfimport \
@@ -73,7 +73,7 @@ class Media():
     def vlc(self):
         #   VLC - Video Player
         update()
-        # Install VLC and VLC - Browser Plugin
+        # Install VLC and VLC-Browser Plugin
         system('sudo apt-get install vlc browser-plugin-vlc -y')
 
 class Browser():
