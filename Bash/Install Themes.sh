@@ -4,21 +4,22 @@
 # as I love to see.
 # This is a part of my `iAmLazy` project
 # Please push some bug-fix and help me to be lazy as always :)
-# @dreygur (Rakibul Yeasin)
+# Copyrighted under MIT License
+# 2019 "Rakibul Yeasin" (@dreygur)
 #
 # Supports:
 #     * Debian
 #     * Arch
 #     * Fedora
 #
-# 05:06:2019 02:41:AM WEDNESDAY
+# 12:06:2019 05:34:AM WEDNESDAY
 
 # Colorize :D
 GREEN='\033[0m\033[1;32m'
 RED='\033[0m\033[1;31m'
 END='\033[0m'
 
-# Desktop Entrie
+# Desktop Entry
 PLANK_DESKTOP_ENTRY="[Desktop Entry]
 Encoding=UTF-8
 Version=0.11.4
@@ -146,8 +147,10 @@ function install_plank () {
         sudo yum install -y plank
     fi
 
-    echo "Preparing Plank to autostart..."
-    sudo tee $HOME/.config/autostart/Plank.desktop <<< "$PLANK_DESKTOP_ENTRY"
+    echo -e "Preparing Plank to autostart...\n"
+    sudo tee $HOME/.config/autostart/Plank.desktop <<< "$PLANK_DESKTOP_ENTRY" | grep -v "" # Grep Used for not showing output to stdout
+    echo -e "Starting \"Plank\"\n"
+    setsid /usr/bin/plank &>/dev/null # Starts the plank executable in a new shell to skip showing outputs to stdout
 }
 
 function xfce4_config () {
@@ -182,21 +185,26 @@ function xfce4_config () {
     xfdesktop --reload
 }
 
-
 echo -e "Hello ${RED}`whoami`${END},\nHow do you feel???\n"
+
 echo -e "Installing GTK3.0 and Icon themes.\nBe patient..."
 themes
 echo -e "\nThemes installed.\nTweaking your Desktop Environment...\n"
+
 # Installing Plank
 install_plank
 if [[ `de` == 'xfce4' ]]; then
     xfce4_config
 fi
+
 echo -e "\nDone!!!\nCan you please thank me?! :(\n"
+
 echo -e "You better reboot your system now.\nShould I do it for you? [Y/n]\n"
 read confirmaton
 if [[ ${confirmaton,,} == 'y' ]]; then
     echo -e "Rebooting...\n"
     sleep 3; reboot
 fi
+
+# Close the process
 exit
