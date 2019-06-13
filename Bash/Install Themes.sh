@@ -113,6 +113,10 @@ function themes () {
     if [[ ! -e $HOME/.icons ]]; then
         mkdir $HOME/.icons
     fi
+    
+    if [[ ! -e $HOME/.backdrops ]]; then
+        mkdir $HOME/.backdrops
+    fi
 
     # Installs Flat-Remix icon pack
     cp -f $DIR/Flat-Remix.tar.xz $HOME/.icons/
@@ -123,7 +127,7 @@ function themes () {
     tar -xf $HOME/.themes/McOS.tar.gz -C $HOME/.themes/
 
     # The Walpaper
-    cp $DIR/xubuntu-development.png /usr/share/xfce4/backdrops/
+    cp $DIR/xubuntu-development.png $HOME/.backdrops
 
     # Clean the Directories
     if [[ $DIR == '.' ]]; then
