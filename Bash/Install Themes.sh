@@ -154,8 +154,8 @@ function install_plank () {
     echo -e "Preparing Plank to autostart...\n"
     sudo tee $HOME/.config/autostart/Plank.desktop <<< "$PLANK_DESKTOP_ENTRY" | grep -v "" # Grep Used for not showing output to stdout
     echo -e "Starting \"Plank\"\n"
-    # setsid /usr/bin/plank &>/dev/null
-    /usr/bin/plank & disown  # Starts the plank executable in a new shell to skip showing outputs to stdout
+    # /usr/bin/plank & disown
+    setsid /usr/bin/plank &>/dev/null # Starts the plank executable in a new shell to skip showing outputs to stdout
 }
 
 function xfce4_config () {
