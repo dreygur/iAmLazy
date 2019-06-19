@@ -29,6 +29,6 @@ Categories=AudioVideo;Player;Recorder;" | sudo tee -a /usr/share/applications/po
 
 sudo wget -O /opt/popcorntime/popcorn.png https://upload.wikimedia.org/wikipedia/commons/d/df/Pctlogo.png
 
-rm Popcorn-Time-0.3.10-Linux-64.tar.xz
+rm popcorntime.tar.xz
 
 echo "Done!!!"
