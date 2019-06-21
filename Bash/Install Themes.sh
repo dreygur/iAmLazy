@@ -131,9 +131,9 @@ function themes () {
 
     # Clean the Directories
     if [[ $DIR == '.' ]]; then
-        rm McOS.tar.gz Flat-Remix.tar.xz
+        rm McOS.tar.gz Flat-Remix.tar.xz xubuntu-development.png
     fi
-    rm $HOME/.themes/McOS.tar.gz $HOME/.icons/Flat-Remix.tar.xz $DIR/xubuntu-development.png
+    rm $HOME/.themes/McOS.tar.gz $HOME/.icons/Flat-Remix.tar.xz
 }
 
 function install_plank () {
@@ -155,7 +155,7 @@ function install_plank () {
     sudo tee $HOME/.config/autostart/Plank.desktop <<< "$PLANK_DESKTOP_ENTRY" | grep -v "" # Grep Used for not showing output to stdout
     echo -e "Starting \"Plank\"\n"
     # /usr/bin/plank & disown
-    setsid /usr/bin/plank &>/dev/null # Starts the plank executable in a new shell to skip showing outputs to stdout
+    setsid /usr/bin/plank <dev/null &>/dev/null & # Starts the plank executable in a new shell to skip showing outputs to stdout
 }
 
 function xfce4_config () {
