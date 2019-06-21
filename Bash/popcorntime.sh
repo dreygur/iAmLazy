@@ -2,6 +2,7 @@
 
 # Bash Script to Install Popcorn-Time
 # For Mamun(Shanto)
+# Works on any GNU/Linux Distro
 
 
 echo "Updating..."
@@ -19,13 +20,13 @@ sudo ln -sf /opt/popcorntime/Popcorn-Time /usr/bin/Popcorn-Time
 
 echo "Setting up Desktop Entry..."
 echo "[Desktop Entry]
-Version = 1.0
-Type = Application
-Terminal = false
-Name = Popcorn Time
-Exec = /usr/bin/Popcorn-Time
-Icon = /opt/popcorntime/popcorn.png
-Categories = AudioVideo;Player;Recorder;" | sudo tee -a /usr/share/applications/popcorntime.desktop
+Version=1.0
+Type=Application
+Terminal=false
+Name=Popcorn Time
+Exec=/usr/bin/Popcorn-Time
+Icon=/opt/popcorntime/popcorn.png
+Categories=AudioVideo;Player;Recorder;" | sudo tee -a /usr/share/applications/popcorntime.desktop
 
 sudo wget -O /opt/popcorntime/popcorn.png https://upload.wikimedia.org/wikipedia/commons/d/df/Pctlogo.png
 
