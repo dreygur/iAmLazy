@@ -209,6 +209,30 @@ function xfce_config () {
 function gnome_config() {
 	# Configuration Function for Gnome
 	# Only works for Gnome3
+	
+	# Installing gnome-shell
+	if [[ `distro` == 'debian' ]]; then
+		sudo apt-get install chrome-gnome-shell
+	elif [[ `distro` == 'arch' ]]; then
+		sudo pacman -S chrome-gnome-shell --noconfirm
+	elif [[ `distro` == 'fedora' ]]; then
+		sudo dnf install -y chrome-gnome-shell
+	fi
+	
+	# Set the Desktop Background
+	gsettings set org.gnome.desktop.background picture-options 'centered'
+	gsettings set org.gnome.desktop.background picture-uri "$HOME/.backdrops/xubuntu-development.png"
+	
+	# Set Theme
+	gsettings set org.gnome.shell.extensions.user-theme name "McOS-MJV-Dark-XFCE-Edition-2.3" # Theme name must be changed
+	gsettings set org.gnome.desktop.interface gtk-theme "McOS-MJV-Dark-XFCE-Edition-2.3" # Theme name must be changed
+	
+	# Set window manager
+	gsettings set org.gnome.desktop.wm.preferences theme "McOS-MJV-Dark-XFCE-Edition-2.3" # Theme name must be changed
+	gsettings set org.gnome.desktop.wm.preferences button-layout "close,minimize,maximize:" # Mac-like window manager
+	
+	# Set icon pack
+	gsettings set org.gnome.desktop.interface icon-theme "Flat-Remix-Blue-Dark"
 }
 
 echo -e "Hello ${RED}`whoami`${END},\nHow do you feel???\n"
