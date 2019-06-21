@@ -35,159 +35,180 @@ Hidden=false"
 # Banner
 echo -e "$GREEN
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
-        Theme installer and autoconfig for XFCE4
-        This Package installs McOS Dark theme &
-        Flat-Remix icon pack on XFCE4
-        Also installs Plank as Bottom-Dock
+		Theme installer and autoconfig for XFCE4
+		This Package installs McOS Dark theme &
+		Flat-Remix icon pack on XFCE4
+		Also installs Plank as Bottom-Dock
 
-        Support for GNome, KDE, LXDE and Cinnamon
-            will be added soon... :)
-        
-        Bug report: rytotul@yahoo.com
-        Github: https://github.com/dreygur/iAmLazy 
+		Support for GNome, KDE, LXDE and Cinnamon
+			will be added soon... :)
+		
+		Bug report: rytotul@yahoo.com
+		Github: https://github.com/dreygur/iAmLazy 
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 $END"
 
 function distro () {
-    # Distro detector
-    # Detects Currently Installed Distribution
+	# Distro detector
+	# Detects Currently Installed Distribution
 
-    local DISTRO_NAME DISTRO_DATA DISTRO_STR
-    # Checking Current Distro
-    # cat /etc/*-release | grep "debian" #Outputs ID_LIKE=debian
-    for line in `cat /etc/*-release`; do
-        if [[ $line =~ ^(NAME|DISTRIB_ID)=(.+)$ ]]; then
-            DISTRO_STR=${BASH_REMATCH[2]}
-            if echo $DISTRO_STR | grep -q ['ubuntu','debian','mint']; then
-                DISTRO_NAME='debian'
-            elif echo $DISTRO_STR | grep -q ['fedora']; then
-                DISTRO_NAME='fedora'
-            elif echo $DISTRO_STR | grep -q ['arch','manjaro','antergos','parabola','anarchy']; then
-                DISTRO_NAME='arch'
-            fi
-            break
-        fi
-    done
-    # plain-arch installation doesn't guarantee /etc/os-release
-    # but the filesystem pkg installs a blank /etc/arch-release
-    if [ -z "$DISTRO_NAME" ]; then
-        if [ -e /etc/arch-release ]; then
-        DISTRO_NAME='arch'
-        fi
-    fi
-    echo $DISTRO_NAME
+	local DISTRO_NAME DISTRO_DATA DISTRO_STR
+	# Checking Current Distro
+	# cat /etc/*-release | grep "debian" #Outputs ID_LIKE=debian
+	for line in `cat /etc/*-release`; do
+		if [[ $line =~ ^(NAME|DISTRIB_ID)=(.+)$ ]]; then
+			DISTRO_STR=${BASH_REMATCH[2]}
+			if echo $DISTRO_STR | grep -q ['ubuntu','debian','mint']; then
+				DISTRO_NAME='debian'
+			elif echo $DISTRO_STR | grep -q ['fedora']; then
+				DISTRO_NAME='fedora'
+			elif echo $DISTRO_STR | grep -q ['arch','manjaro','antergos','parabola','anarchy']; then
+				DISTRO_NAME='arch'
+			fi
+			break
+		fi
+	done
+	# plain-arch installation doesn't guarantee /etc/os-release
+	# but the filesystem pkg installs a blank /etc/arch-release
+	if [ -z "$DISTRO_NAME" ]; then
+		if [ -e /etc/arch-release ]; then
+		DISTRO_NAME='arch'
+		fi
+	fi
+	echo $DISTRO_NAME
 }
 
 function de () {
-    # Desktop Environment Detector
-    # Till now it doesn't work
-    echo 'xfce4'
+	# Desktop Environment Detector
+	# Can detect 'xfce, kde, gnome and lxde'
+	
+	if [ "$XDG_CURRENT_DESKTOP" = "" ]; then
+		desktop=$( echo "$XDG_DATA_DIRS" | sed 's/.*\(xfce\|kde\|gnome\|lxde\).*/\1/' )
+	else
+		desktop=$XDG_CURRENT_DESKTOP
+	fi
+
+	desktop=${desktop,,} # Convert string to lower case
+
+	echo "$desktop" # Returns Current DE name
 }
 
 function themes () {
-    # Theme installer
-    # Need to Implement downloading feature
-    # But, the download link is temporary :(
-    
-    DIR="."
+	# Theme installer
+	# Downloads themes if not available locally
 
-    # Checks if the Script is running from the parent folder or not
-    # And then decides to download the required packs or not
-    if [[ `pwd` =~ 'Bash' ]]; then
-        DIR='../Python/assets'
-    elif [[ `pwd` =~ 'iAmLazy' ]]; then
-        DIR="./Python/assets"
-    else
-        # Download Icon-Pack
-        wget -O Flat-Remix.tar.xz "https://github.com/dreygur/iAmLazy/raw/master/Python/assets/Flat-Remix.tar.xz"
-        # Download xfce4 theme
-        wget -O McOS.tar.gz "https://github.com/dreygur/iAmLazy/raw/master/Python/assets/McOS.tar.gz"
-        # Downloads Walpaper
-        wget -O xubuntu-development.png "https://github.com/dreygur/iAmLazy/raw/master/Python/assets/xubuntu-development.png"
-    fi
+	DIR="."
 
-    if [[ ! -e $HOME/.themes ]]; then
-        mkdir $HOME/.themes
-    fi
+	# Checks if the Script is running from the parent folder or not
+	# And then decides to download the required packs or not
+	if [[ `pwd` =~ 'Bash' ]]; then
+		DIR='../Python/assets'
+	elif [[ `pwd` =~ 'iAmLazy' ]]; then
+		DIR="./Python/assets"
+	else
+		# Download Icon-Pack
+		wget -O Flat-Remix.tar.xz "https://github.com/dreygur/iAmLazy/raw/master/Python/assets/Flat-Remix.tar.xz"
+		# Download theme
+		if [[ `de` == 'xfce' ]]; then
+			# Theme for XFCE4
+			wget -O McOS.tar.gz "https://github.com/dreygur/iAmLazy/raw/master/Python/assets/McOS.tar.gz"
+		elif [[ `de` == 'gnome' ]]; then
+			wget -O McOS.tar.gz 
+		fi
+		# Downloads Walpaper
+		wget -O xubuntu-development.png "https://github.com/dreygur/iAmLazy/raw/master/Python/assets/xubuntu-development.png"
+	fi
 
-    if [[ ! -e $HOME/.icons ]]; then
-        mkdir $HOME/.icons
-    fi
-    
-    if [[ ! -e $HOME/.backdrops ]]; then
-        mkdir $HOME/.backdrops
-    fi
+	if [[ ! -e $HOME/.themes ]]; then
+		mkdir $HOME/.themes
+	fi
 
-    # Installs Flat-Remix icon pack
-    cp -f $DIR/Flat-Remix.tar.xz $HOME/.icons/
-    tar -xf $HOME/.icons/Flat-Remix.tar.xz -C $HOME/.icons/
+	if [[ ! -e $HOME/.icons ]]; then
+		mkdir $HOME/.icons
+	fi
+	
+	if [[ ! -e $HOME/.backdrops ]]; then
+		mkdir $HOME/.backdrops
+	fi
 
-    # Installs McOS-Dark Theme
-    cp -f $DIR/McOS.tar.gz $HOME/.themes/
-    tar -xf $HOME/.themes/McOS.tar.gz -C $HOME/.themes/
+	# Installs Flat-Remix icon pack
+	cp -f $DIR/Flat-Remix.tar.xz $HOME/.icons/
+	tar -xf $HOME/.icons/Flat-Remix.tar.xz -C $HOME/.icons/
 
-    # The Walpaper
-    cp $DIR/xubuntu-development.png $HOME/.backdrops
+	# Installs McOS-Dark Theme
+	cp -f $DIR/McOS.tar.gz $HOME/.themes/
+	tar -xf $HOME/.themes/McOS.tar.gz -C $HOME/.themes/
 
-    # Clean the Directories
-    if [[ $DIR == '.' ]]; then
-        rm McOS.tar.gz Flat-Remix.tar.xz xubuntu-development.png
-    fi
-    rm $HOME/.themes/McOS.tar.gz $HOME/.icons/Flat-Remix.tar.xz
+	# The Walpaper
+	cp $DIR/xubuntu-development.png $HOME/.backdrops
+
+	# Clean the Directories
+	if [[ $DIR == '.' ]]; then
+		rm McOS.tar.gz Flat-Remix.tar.xz xubuntu-development.png
+	fi
+	rm $HOME/.themes/McOS.tar.gz $HOME/.icons/Flat-Remix.tar.xz
 }
 
 function install_plank () {
-    # Install Plank
+	# Install Plank
 
-    echo -e "Installing Plank...\n"
-    if [[ `distro` == 'debian' ]]; then
-        sudo add-apt-repository ppa:ricotz/docky -y
-        sudo apt-get update -y
-        sudo apt-get install -y plank
-    elif [[ `distro` == 'arch' ]]; then
-        sudo pacman -Syu plank --noconfirm
-    elif [[ `distro` == 'fedora' ]]; then
-        sudo yum update -y
-        sudo yum install -y plank
-    fi
+	echo -e "Installing Plank...\n"
+	if [[ `distro` == 'debian' ]]; then
+		sudo add-apt-repository ppa:ricotz/docky -y
+		sudo apt-get update -y
+		sudo apt-get install -y plank
+	elif [[ `distro` == 'arch' ]]; then
+		sudo pacman -Syu plank --noconfirm
+	elif [[ `distro` == 'fedora' ]]; then
+		sudo yum update -y
+		sudo yum install -y plank
+	fi
 
-    echo -e "Preparing Plank to autostart...\n"
-    sudo tee $HOME/.config/autostart/Plank.desktop <<< "$PLANK_DESKTOP_ENTRY" | grep -v "" # Grep Used for not showing output to stdout
-    echo -e "Starting \"Plank\"\n"
-    # /usr/bin/plank & disown
-    setsid /usr/bin/plank <dev/null &>/dev/null & # Starts the plank executable in a new shell to skip showing outputs to stdout
+	echo -e "Preparing Plank to autostart...\n"
+	sudo tee $HOME/.config/autostart/Plank.desktop <<< "$PLANK_DESKTOP_ENTRY" | grep -v "" # Grep Used for not showing output to stdout
+	echo -e "Starting \"Plank\"\n"
+	# /usr/bin/plank & disown
+	setsid /usr/bin/plank </dev/null &>/dev/null & # Starts the plank executable in a new shell to skip showing outputs to stdout
 }
 
-function xfce4_config () {
-    # Configure Theme
-    xfconf-query -c xsettings -p /Net/ThemeName -s "McOS-MJV-Dark-XFCE-Edition-2.3"
+function xfce_config () {
+	# Configuration function for XFCE
+	# Only works on XFCE4
 
-    # Configure Icon
-    xfconf-query -c xsettings -p /Net/IconThemeName -s "Flat-Remix-Blue-Dark"
+	# Configure Theme
+	xfconf-query -c xsettings -p /Net/ThemeName -s "McOS-MJV-Dark-XFCE-Edition-2.3"
 
-    # Configure Window manager
-    xfconf-query -c xfwm4 -p /general/theme -s "McOS-MJV-Dark-XFCE-Edition-2.3"
-    xfconf-query -c xfwm4 -p /general/inactive_opacity -s "100"
+	# Configure Icon
+	xfconf-query -c xsettings -p /Net/IconThemeName -s "Flat-Remix-Blue-Dark"
 
-    # Configure Thunar
-    xfconf-query -c thunar -p /last-view -s "ThunarIconView"
-    xfconf-query -c thunar -p /last-icon-view-zoom-level -s "THUNAR_ZOOM_LEVEL_NORMAL"
-    xfconf-query -c thunar -p /last-location-bar -s "ThunarLocationButtons"
-    
-    # Configure Desktop
-    xfconf-query -c xfce4-desktop --create -p /backdrop/screen0/monitor0/workspace0/last-image -s "/usr/share/xfce4/backdrops/xubuntu-development.png"
-    xfconf-query -c xfce4-desktop -p /desktop-icons/file-icons/show-filesystem -s "false"
-    xfconf-query -c xfce4-desktop -p /desktop-icons/file-icons/show-removable -s "false"
-    xfconf-query -c xfce4-desktop -p /desktop-icons/style -s "2"
+	# Configure Window manager
+	xfconf-query -c xfwm4 -p /general/theme -s "McOS-MJV-Dark-XFCE-Edition-2.3"
+	xfconf-query -c xfwm4 -p /general/inactive_opacity -s "100"
 
-    # Configure Panel
-    xfconf-query -c xfce4-panel -p /panels/panel-0/position -s "p=6;x=0;y=0"
-    xfconf-query -c xfce4-panel -p /panels/panel-0/length -t "uint" -s "100"
-    xfconf-query -c xfce4-panel -p /panels/panel-0/position-locked -t "bool" -s "true"
+	# Configure Thunar
+	xfconf-query -c thunar -p /last-view -s "ThunarIconView"
+	xfconf-query -c thunar -p /last-icon-view-zoom-level -s "THUNAR_ZOOM_LEVEL_NORMAL"
+	xfconf-query -c thunar -p /last-location-bar -s "ThunarLocationButtons"
+	
+	# Configure Desktop
+	xfconf-query -c xfce4-desktop --create -p /backdrop/screen0/monitor0/workspace0/last-image -s "/usr/share/xfce4/backdrops/xubuntu-development.png"
+	xfconf-query -c xfce4-desktop -p /desktop-icons/file-icons/show-filesystem -s "false"
+	xfconf-query -c xfce4-desktop -p /desktop-icons/file-icons/show-removable -s "false"
+	xfconf-query -c xfce4-desktop -p /desktop-icons/style -s "2"
 
-    # Arrange Icons & Reload the Desktop
-    xfdesktop --arrange
-    xfdesktop --reload
+	# Configure Panel
+	xfconf-query -c xfce4-panel -p /panels/panel-0/position -s "p=6;x=0;y=0"
+	xfconf-query -c xfce4-panel -p /panels/panel-0/length -t "uint" -s "100"
+	xfconf-query -c xfce4-panel -p /panels/panel-0/position-locked -t "bool" -s "true"
+
+	# Arrange Icons & Reload the Desktop
+	xfdesktop --arrange
+	xfdesktop --reload
+}
+
+function gnome_config() {
+	# Configuration Function for Gnome
+	# Only works for Gnome3
 }
 
 echo -e "Hello ${RED}`whoami`${END},\nHow do you feel???\n"
@@ -198,8 +219,18 @@ echo -e "\nThemes installed.\nTweaking your Desktop Environment...\n"
 
 # Installing Plank
 install_plank
-if [[ `de` == 'xfce4' ]]; then
-    xfce4_config
+if [[ `de` == 'xfce' ]]; then
+	echo -e "Detected XFCE Desktop Environment...\n"
+	xfce_config
+elif [[ `de` == 'kde' ]]; then
+	echo "KDE Plasma is not yet supported..."
+	exit 21
+elif [[ `de` == 'gnome' ]]; then
+	echo "Gnome3 is not supported yet..."
+	exit 22
+elif [[ `de` == 'lxde' ]];then
+	echo "LXDE is not yet supported..."
+	exit 23
 fi
 
 echo -e "\nDone!!!\nCan you please thank me?! :(\n"
@@ -207,8 +238,8 @@ echo -e "\nDone!!!\nCan you please thank me?! :(\n"
 echo -e "You better reboot your system now.\nShould I do it for you? [Y/n]\n"
 read confirmaton
 if [[ ${confirmaton,,} == 'y' ]]; then
-    echo -e "Rebooting...\n"
-    sleep 3; reboot
+	echo -e "Rebooting...\n"
+	sleep 3; reboot
 fi
 
 # Close the process

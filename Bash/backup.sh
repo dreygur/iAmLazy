@@ -5,8 +5,8 @@ cd backup
 
 for n in $(dpkg --get-selections|grep -v deinstall|awk '{print $1}')
 do
-    echo Packaging $n
-    sudo dpkg-repack $n
+	echo Packaging $n
+	sudo dpkg-repack $n
 done 
 
 cd ..
