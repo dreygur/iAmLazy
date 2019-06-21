@@ -1,5 +1,3 @@
 bin*
 inputs/*
 src/*
-./Bash/Detect\ Current\ OS.sh
-

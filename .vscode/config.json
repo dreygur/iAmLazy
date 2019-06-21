@@ -1,0 +1,6 @@
+{
+	"git.ignoreLimitWarning": true,
+	"editor.insertSpaces": false,
+	"files.autoSave": "onFocusChange",
+	"editor.multiCursorModifier": "ctrlCmd"
+}
