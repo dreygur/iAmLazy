@@ -231,6 +231,8 @@ function gnome_config() {
 	gsettings set org.gnome.desktop.background picture-uri "$HOME/.backdrops/xubuntu-development.png"
 	
 	# Set Theme
+	sudo cp $HOME/.local/share/gnome-shell/extensions/user-theme@gnome-shell-extensions.gcampax.github.com/schemas/org.gnome.shell.extensions.user-theme.gschema.xml /usr/share/glib-2.0/schemas
+	sudo glib-compile-schemas /usr/share/glib-2.0/schemas
 	gsettings set org.gnome.shell.extensions.user-theme name "Mc-OS-MJV-Dark-Gn3.32-V.2.1"
 	gsettings set org.gnome.desktop.interface gtk-theme "Mc-OS-MJV-Dark-Gn3.32-V.2.1"
 	
