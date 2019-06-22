@@ -87,21 +87,21 @@ function themes () {
 	# Checks if the Script is running from the parent folder or not
 	# And then decides to download the required packs or not
 	if [[ `pwd` =~ 'Bash' ]]; then
-		DIR='../Python/assets'
+		DIR='../Assets'
 	elif [[ `pwd` =~ 'iAmLazy' ]]; then
-		DIR="./Python/assets"
+		DIR="./Assets"
 	else
 		# Download Icon-Pack
-		wget -O Flat-Remix.tar.xz "https://github.com/dreygur/iAmLazy/raw/master/Python/assets/Flat-Remix.tar.xz"
+		wget -O Flat-Remix.tar.xz "https://github.com/dreygur/iAmLazy/raw/master/Assets/Flat-Remix.tar.xz"
 		# Download theme
 		if [[ `de` == 'xfce' ]]; then
 			# Theme for XFCE4
-			wget -O McOS-MJV-Dark-XFCE-Edition-2.3.tar.gz "https://github.com/dreygur/iAmLazy/raw/master/Python/assets/McOS-MJV-Dark-XFCE-Edition-2.3.tar.gz"
+			wget -O McOS-MJV-Dark-XFCE-Edition-2.3.tar.gz "https://github.com/dreygur/iAmLazy/raw/master/Assets/McOS-MJV-Dark-XFCE-Edition-2.3.tar.gz"
 		elif [[ `de` == 'gnome' ]]; then
-			wget -O Mc-OS-MJV-Dark-Gn3.32-V.2.1.tar.xz "https://github.com/dreygur/iAmLazy/raw/master/Python/assets/Mc-OS-MJV-Dark-Gn3.32-V.2.1.tar.xz"
+			wget -O Mc-OS-MJV-Dark-Gn3.32-V.2.1.tar.xz "https://github.com/dreygur/iAmLazy/raw/master/Assets/Mc-OS-MJV-Dark-Gn3.32-V.2.1.tar.xz"
 		fi
 		# Downloads Walpaper
-		wget -O xubuntu-development.png "https://github.com/dreygur/iAmLazy/raw/master/Python/assets/xubuntu-development.png"
+		wget -O xubuntu-development.png "https://github.com/dreygur/iAmLazy/raw/master/Assets/xubuntu-development.png"
 	fi
 
 	if [[ ! -e $HOME/.themes ]]; then
@@ -120,13 +120,20 @@ function themes () {
 	cp -f $DIR/Flat-Remix.tar.xz $HOME/.icons/
 	tar -xf $HOME/.icons/Flat-Remix.tar.xz -C $HOME/.icons/
 
+	# Installs McMojave-circle-black icon pack
+	cp -f $DIR/McMojave-circle-black.tar.xz $HOME/.icons/
+	tar -xf $HOME/.icons/McMojave-circle-black.tar.xz -C $HOME/.icons/
+
 	# Installs McOS-Dark Theme
 	if [[ `de` == 'xfce' ]]; then
 		cp -f $DIR/McOS-MJV-Dark-XFCE-Edition-2.3.tar.gz $HOME/.themes/
 		tar -xf $HOME/.themes/McOS-MJV-Dark-XFCE-Edition-2.3.tar.gz -C $HOME/.themes/
 		# Clean the Directories
 		if [[ $DIR == '.' ]]; then
-			rm McOS-MJV-Dark-XFCE-Edition-2.3.tar.gz Flat-Remix.tar.xz xubuntu-development.png
+			rm McOS-MJV-Dark-XFCE-Edition-2.3.tar.gz
+			# rm Flat-Remix.tar.xz
+			rm xubuntu-development.png
+			rm McMojave-circle-black.tar.xz
 		fi
 		rm $HOME/.themes/McOS-MJV-Dark-XFCE-Edition-2.3.tar.gz
 	elif [[ `de` == 'gnome' ]]; then
@@ -134,7 +141,10 @@ function themes () {
 		tar -xf $HOME/.themes/Mc-OS-MJV-Dark-Gn3.32-V.2.1.tar.xz -C $HOME/.themes/
 		# Clean the Directories
 		if [[ $DIR == '.' ]]; then
-			rm Mc-OS-MJV-Dark-Gn3.32-V.2.1.tar.gz Flat-Remix.tar.xz xubuntu-development.png
+			rm Mc-OS-MJV-Dark-Gn3.32-V.2.1.tar.gz
+			# rm Flat-Remix.tar.xz
+			rm xubuntu-development.png
+			rm McMojave-circle-black.tar.xz
 		fi
 		rm $HOME/.themes/Mc-OS-MJV-Dark-Gn3.32-V.2.1.tar.xz
 	fi
@@ -178,7 +188,8 @@ function xfce_config () {
 	xfconf-query -c xsettings -p /Net/ThemeName -s "McOS-MJV-Dark-XFCE-Edition-2.3"
 
 	# Configure Icon
-	xfconf-query -c xsettings -p /Net/IconThemeName -s "Flat-Remix-Blue-Dark"
+	# xfconf-query -c xsettings -p /Net/IconThemeName -s "Flat-Remix-Blue-Dark"
+	xfconf-query -c xsettings -p /Net/IconThemeName -s "McMojave-circle-black"
 
 	# Configure Window manager
 	xfconf-query -c xfwm4 -p /general/theme -s "McOS-MJV-Dark-XFCE-Edition-2.3"
@@ -233,7 +244,8 @@ function gnome_config() {
 	gsettings set org.gnome.desktop.wm.preferences button-layout "close,minimize,maximize:" # Mac-like window manager
 	
 	# Set icon pack
-	gsettings set org.gnome.desktop.interface icon-theme "Flat-Remix-Blue-Dark"
+	# gsettings set org.gnome.desktop.interface icon-theme "Flat-Remix-Blue-Dark"
+	gsettings set org.gnome.desktop.interface icon-theme "McMojave-circle-black"
 }
 
 echo -e "Hello ${RED}`whoami`${END},\nHow do you feel???\n"
