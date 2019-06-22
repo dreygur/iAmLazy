@@ -19,18 +19,6 @@ GREEN='\033[0m\033[1;32m'
 RED='\033[0m\033[1;31m'
 END='\033[0m'
 
-# Desktop Entry
-PLANK_DESKTOP_ENTRY="[Desktop Entry]
-Encoding=UTF-8
-Version=0.11.4
-Type=Application
-Name=Plank
-Comment=Plank Dock
-Exec=/usr/bin/plank
-StartupNotify=false
-Terminal=false
-Hidden=false"
-
 # Banner
 echo -e "$GREEN
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
@@ -174,9 +162,9 @@ function install_plank () {
 	fi
 
 	# Plank Desktop Entry
-	mkdir -p $HOME/.config/autostart && touch $HOME/.config/autostart/Plank.desktop
-	echo -e "Preparing Plank to autostart...\n"
-	sudo tee $HOME/.config/autostart/Plank.desktop <<< "$PLANK_DESKTOP_ENTRY" | grep -v "" # Grep Used for not showing output to stdout
+	mkdir -p $HOME/.config/autostart
+	sudo cp /usr/share/applications/plank.desktop $HOME/.config/autostart/ # For Current User
+	# sudo cp /usr/share/applications/plank.desktop /etc/xdg/autostart/ # For all Users
 	echo -e "Starting \"Plank\"\n"
 	# /usr/bin/plank & disown
 	setsid /usr/bin/plank </dev/null &>/dev/null & # Starts the plank executable in a new shell to skip showing outputs to stdout
