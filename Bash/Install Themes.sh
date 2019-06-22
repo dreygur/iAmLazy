@@ -111,9 +111,9 @@ function themes () {
 		# Download theme
 		if [[ `de` == 'xfce' ]]; then
 			# Theme for XFCE4
-			wget -O McOS.tar.gz "https://github.com/dreygur/iAmLazy/raw/master/Python/assets/McOS.tar.gz"
+			wget -O McOS-MJV-Dark-XFCE-Edition-2.3.tar.gz "https://github.com/dreygur/iAmLazy/raw/master/Python/assets/McOS-MJV-Dark-XFCE-Edition-2.3.tar.gz"
 		elif [[ `de` == 'gnome' ]]; then
-			wget -O McOS.tar.gz "https://github.com/dreygur/iAmLazy/raw/master/Python/assets/Mc-OS-MJV-Dark-Gn3.32-V.2.1.tar.xz"
+			wget -O Mc-OS-MJV-Dark-Gn3.32-V.2.1.tar.xz "https://github.com/dreygur/iAmLazy/raw/master/Python/assets/Mc-OS-MJV-Dark-Gn3.32-V.2.1.tar.xz"
 		fi
 		# Downloads Walpaper
 		wget -O xubuntu-development.png "https://github.com/dreygur/iAmLazy/raw/master/Python/assets/xubuntu-development.png"
@@ -136,9 +136,14 @@ function themes () {
 	tar -xf $HOME/.icons/Flat-Remix.tar.xz -C $HOME/.icons/
 
 	# Installs McOS-Dark Theme
-	cp -f $DIR/McOS.tar.gz $HOME/.themes/
-	tar -xf $HOME/.themes/McOS.tar.gz -C $HOME/.themes/
-
+	if [[ `de` == 'xfce' ]]; then
+		cp -f $DIR/McOS.tar.gz $HOME/.themes/
+		tar -xf $HOME/.themes/McOS-MJV-Dark-XFCE-Edition-2.3.tar.gz -C $HOME/.themes/
+	elif [[ `de` == 'gnome' ]]; then
+		cp -f $DIR/McOS.tar.gz $HOME/.themes/
+		tar -xf $HOME/.themes/Mc-OS-MJV-Dark-Gn3.32-V.2.1.tar.xz -C $HOME/.themes/
+	fi
+	
 	# The Walpaper
 	cp $DIR/xubuntu-development.png $HOME/.backdrops
 
