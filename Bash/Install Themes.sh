@@ -181,6 +181,7 @@ function install_plank () {
 	# Plank Theme
 	mkdir $HOME/.local/share/plank/theme/Transparent-2.0.0
 	cp $DIR/dock.theme $HOME/.local/share/plank/theme/Transparent-2.0.0/
+
 	echo -e "Starting \"Plank\"\n"
 	# /usr/bin/plank & disown
 	setsid /usr/bin/plank </dev/null &>/dev/null & # Starts the plank executable in a new shell to skip showing outputs to stdout
@@ -257,7 +258,7 @@ function gnome_config() {
 echo -e "Hello ${RED}`whoami`${END},\nHow do you feel???\n"
 
 echo -e "Installing GTK3.0 and Icon themes.\nBe patient..."
-themes
+themes # Themes Function
 echo -e "\nThemes installed.\nTweaking your Desktop Environment...\n"
 
 # Installing Plank
@@ -274,6 +275,9 @@ elif [[ `de` == 'gnome' ]]; then
 elif [[ `de` == 'lxde' ]];then
 	echo "LXDE is not yet supported..."
 	exit 23
+else
+	echo "Your Current DE is not yet supported..."
+	exit 20
 fi
 
 echo -e "\nDone!!!\nCan you please thank me?! :(\n"
