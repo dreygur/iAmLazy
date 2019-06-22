@@ -250,8 +250,8 @@ elif [[ `de` == 'kde' ]]; then
 	echo "KDE Plasma is not yet supported..."
 	exit 21
 elif [[ `de` == 'gnome' ]]; then
-	echo "Gnome3 is not supported yet..."
-	exit 22
+	echo -e "Detected Gnome Desktop Environment...\n"
+	gnome_config
 elif [[ `de` == 'lxde' ]];then
 	echo "LXDE is not yet supported..."
 	exit 23
