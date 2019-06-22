@@ -113,7 +113,7 @@ function themes () {
 			# Theme for XFCE4
 			wget -O McOS.tar.gz "https://github.com/dreygur/iAmLazy/raw/master/Python/assets/McOS.tar.gz"
 		elif [[ `de` == 'gnome' ]]; then
-			wget -O McOS.tar.gz 
+			wget -O McOS.tar.gz "https://github.com/dreygur/iAmLazy/raw/master/Python/assets/Mc-OS-MJV-Dark-Gn3.32-V.2.1.tar.xz"
 		fi
 		# Downloads Walpaper
 		wget -O xubuntu-development.png "https://github.com/dreygur/iAmLazy/raw/master/Python/assets/xubuntu-development.png"
@@ -212,7 +212,7 @@ function gnome_config() {
 	
 	# Installing gnome-shell
 	if [[ `distro` == 'debian' ]]; then
-		sudo apt-get install chrome-gnome-shell
+		sudo apt-get install -y chrome-gnome-shell
 	elif [[ `distro` == 'arch' ]]; then
 		sudo pacman -S chrome-gnome-shell --noconfirm
 	elif [[ `distro` == 'fedora' ]]; then
@@ -224,11 +224,11 @@ function gnome_config() {
 	gsettings set org.gnome.desktop.background picture-uri "$HOME/.backdrops/xubuntu-development.png"
 	
 	# Set Theme
-	gsettings set org.gnome.shell.extensions.user-theme name "McOS-MJV-Dark-XFCE-Edition-2.3" # Theme name must be changed
-	gsettings set org.gnome.desktop.interface gtk-theme "McOS-MJV-Dark-XFCE-Edition-2.3" # Theme name must be changed
+	gsettings set org.gnome.shell.extensions.user-theme name "Mc-OS-MJV-Dark-Gn3.32-V.2.1"
+	gsettings set org.gnome.desktop.interface gtk-theme "Mc-OS-MJV-Dark-Gn3.32-V.2.1"
 	
 	# Set window manager
-	gsettings set org.gnome.desktop.wm.preferences theme "McOS-MJV-Dark-XFCE-Edition-2.3" # Theme name must be changed
+	gsettings set org.gnome.desktop.wm.preferences theme "Mc-OS-MJV-Dark-Gn3.32-V.2.1"
 	gsettings set org.gnome.desktop.wm.preferences button-layout "close,minimize,maximize:" # Mac-like window manager
 	
 	# Set icon pack
