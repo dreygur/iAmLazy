@@ -135,10 +135,10 @@ function themes () {
 
 	# Installs McOS-Dark Theme
 	if [[ `de` == 'xfce' ]]; then
-		cp -f $DIR/McOS.tar.gz $HOME/.themes/
+		cp -f $DIR/McOS-MJV-Dark-XFCE-Edition-2.3.tar.gz $HOME/.themes/
 		tar -xf $HOME/.themes/McOS-MJV-Dark-XFCE-Edition-2.3.tar.gz -C $HOME/.themes/
 	elif [[ `de` == 'gnome' ]]; then
-		cp -f $DIR/McOS.tar.gz $HOME/.themes/
+		cp -f $DIR/Mc-OS-MJV-Dark-Gn3.32-V.2.1.tar.xz $HOME/.themes/
 		tar -xf $HOME/.themes/Mc-OS-MJV-Dark-Gn3.32-V.2.1.tar.xz -C $HOME/.themes/
 	fi
 	
@@ -147,7 +147,8 @@ function themes () {
 
 	# Clean the Directories
 	if [[ $DIR == '.' ]]; then
-		rm McOS.tar.gz Flat-Remix.tar.xz xubuntu-development.png
+		rm McOS-MJV-Dark-XFCE-Edition-2.3.tar.gz || rm Mc-OS-MJV-Dark-Gn3.32-V.2.1.tar.gz
+		rm Flat-Remix.tar.xz xubuntu-development.png
 	fi
 	rm $HOME/.themes/McOS-MJV-Dark-XFCE-Edition-2.3.tar.gz || rm $HOME/.themes/Mc-OS-MJV-Dark-Gn3.32-V.2.1.tar.xz
 	rm $HOME/.icons/Flat-Remix.tar.xz
@@ -169,7 +170,7 @@ function install_plank () {
 	fi
 
 	# Plank Desktop Entry
-	touch $HOME/.config/autostart/Plank.desktop
+	mkdir -p $HOME/.config/autostart && touch $HOME/.config/autostart/Plank.desktop
 	echo -e "Preparing Plank to autostart...\n"
 	sudo tee $HOME/.config/autostart/Plank.desktop <<< "$PLANK_DESKTOP_ENTRY" | grep -v "" # Grep Used for not showing output to stdout
 	echo -e "Starting \"Plank\"\n"
