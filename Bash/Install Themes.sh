@@ -27,7 +27,6 @@ Type=Application
 Name=Plank
 Comment=Plank Dock
 Exec=/usr/bin/plank
-OnlyShowIn=XFCE;
 StartupNotify=false
 Terminal=false
 Hidden=false"
