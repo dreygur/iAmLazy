@@ -102,6 +102,8 @@ function themes () {
 		fi
 		# Downloads Walpaper
 		wget -O xubuntu-development.png "https://github.com/dreygur/iAmLazy/raw/master/Assets/xubuntu-development.png"
+		# Downloads Plank Theme
+		wget -O dock.theme "https://github.com/dreygur/iAmLazy/raw/master/Assets/dock.theme"
 	fi
 
 	if [[ ! -e $HOME/.themes ]]; then
@@ -175,6 +177,10 @@ function install_plank () {
 	mkdir -p $HOME/.config/autostart
 	sudo cp /usr/share/applications/plank.desktop $HOME/.config/autostart/ # For Current User
 	# sudo cp /usr/share/applications/plank.desktop /etc/xdg/autostart/ # For all Users
+
+	# Plank Theme
+	mkdir $HOME/.local/share/plank/theme/Transparent-2.0.0
+	cp $DIR/dock.theme $HOME/.local/share/plank/theme/Transparent-2.0.0/
 	echo -e "Starting \"Plank\"\n"
 	# /usr/bin/plank & disown
 	setsid /usr/bin/plank </dev/null &>/dev/null & # Starts the plank executable in a new shell to skip showing outputs to stdout
