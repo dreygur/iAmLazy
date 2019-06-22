@@ -137,20 +137,25 @@ function themes () {
 	if [[ `de` == 'xfce' ]]; then
 		cp -f $DIR/McOS-MJV-Dark-XFCE-Edition-2.3.tar.gz $HOME/.themes/
 		tar -xf $HOME/.themes/McOS-MJV-Dark-XFCE-Edition-2.3.tar.gz -C $HOME/.themes/
+		# Clean the Directories
+		if [[ $DIR == '.' ]]; then
+			rm McOS-MJV-Dark-XFCE-Edition-2.3.tar.gz Flat-Remix.tar.xz xubuntu-development.png
+		fi
+		rm $HOME/.themes/McOS-MJV-Dark-XFCE-Edition-2.3.tar.gz
 	elif [[ `de` == 'gnome' ]]; then
 		cp -f $DIR/Mc-OS-MJV-Dark-Gn3.32-V.2.1.tar.xz $HOME/.themes/
 		tar -xf $HOME/.themes/Mc-OS-MJV-Dark-Gn3.32-V.2.1.tar.xz -C $HOME/.themes/
+		# Clean the Directories
+		if [[ $DIR == '.' ]]; then
+			rm Mc-OS-MJV-Dark-Gn3.32-V.2.1.tar.gz Flat-Remix.tar.xz xubuntu-development.png
+		fi
+		rm $HOME/.themes/Mc-OS-MJV-Dark-Gn3.32-V.2.1.tar.xz
 	fi
 	
 	# The Walpaper
 	cp $DIR/xubuntu-development.png $HOME/.backdrops
 
 	# Clean the Directories
-	if [[ $DIR == '.' ]]; then
-		rm McOS-MJV-Dark-XFCE-Edition-2.3.tar.gz || rm Mc-OS-MJV-Dark-Gn3.32-V.2.1.tar.gz
-		rm Flat-Remix.tar.xz xubuntu-development.png
-	fi
-	rm $HOME/.themes/McOS-MJV-Dark-XFCE-Edition-2.3.tar.gz || rm $HOME/.themes/Mc-OS-MJV-Dark-Gn3.32-V.2.1.tar.xz
 	rm $HOME/.icons/Flat-Remix.tar.xz
 }
 
@@ -219,11 +224,11 @@ function gnome_config() {
 	
 	# Installing gnome-shell
 	if [[ `distro` == 'debian' ]]; then
-		sudo apt-get install -y chrome-gnome-shell
+		sudo apt-get install -y gnome-shell-extensions chrome-gnome-shell
 	elif [[ `distro` == 'arch' ]]; then
-		sudo pacman -S chrome-gnome-shell --noconfirm
+		sudo pacman -S gnome-shell-extensions chrome-gnome-shell --noconfirm
 	elif [[ `distro` == 'fedora' ]]; then
-		sudo dnf install -y chrome-gnome-shell
+		sudo dnf install -y gnome-shell-extensions chrome-gnome-shell
 	fi
 	
 	# Set the Desktop Background
@@ -231,8 +236,8 @@ function gnome_config() {
 	gsettings set org.gnome.desktop.background picture-uri "$HOME/.backdrops/xubuntu-development.png"
 	
 	# Set Theme
-	sudo cp $HOME/.local/share/gnome-shell/extensions/user-theme@gnome-shell-extensions.gcampax.github.com/schemas/org.gnome.shell.extensions.user-theme.gschema.xml /usr/share/glib-2.0/schemas
-	sudo glib-compile-schemas /usr/share/glib-2.0/schemas
+	# sudo cp $HOME/.local/share/gnome-shell/extensions/user-theme@gnome-shell-extensions.gcampax.github.com/schemas/org.gnome.shell.extensions.user-theme.gschema.xml /usr/share/glib-2.0/schemas
+	# sudo glib-compile-schemas /usr/share/glib-2.0/schemas
 	gsettings set org.gnome.shell.extensions.user-theme name "Mc-OS-MJV-Dark-Gn3.32-V.2.1"
 	gsettings set org.gnome.desktop.interface gtk-theme "Mc-OS-MJV-Dark-Gn3.32-V.2.1"
 	
