@@ -83,12 +83,10 @@ function de () {
 	# Can detect 'xfce, kde, gnome and lxde'
 	
 	if [ "$XDG_CURRENT_DESKTOP" = "" ]; then
-		desktop=$( echo "$XDG_DATA_DIRS" | sed 's/.*\(xfce\|kde\|gnome\|lxde\).*/\1/' )
+		desktop=$( echo "$XDG_DATA_DIRS" | tr '[A-Z]' '[a-z]' | sed 's/.*\(xfce\|kde\|gnome\|lxde\).*/\1/' )
 	else
-		desktop=$XDG_CURRENT_DESKTOP
+		desktop=$( echo "$XDG_CURRENT_DESKTOP" | tr '[A-Z]' '[a-z]' | sed 's/.*\(xfce\|kde\|gnome\|lxde\).*/\1/' )
 	fi
-
-	desktop=${desktop,,} # Convert string to lower case
 
 	echo "$desktop" # Returns Current DE name
 }
@@ -151,7 +149,8 @@ function themes () {
 	if [[ $DIR == '.' ]]; then
 		rm McOS.tar.gz Flat-Remix.tar.xz xubuntu-development.png
 	fi
-	rm $HOME/.themes/McOS.tar.gz $HOME/.icons/Flat-Remix.tar.xz
+	rm $HOME/.themes/McOS-MJV-Dark-XFCE-Edition-2.3.tar.gz || rm $HOME/.themes/Mc-OS-MJV-Dark-Gn3.32-V.2.1.tar.xz
+	rm $HOME/.icons/Flat-Remix.tar.xz
 }
 
 function install_plank () {
@@ -169,6 +168,8 @@ function install_plank () {
 		sudo yum install -y plank
 	fi
 
+	# Plank Desktop Entry
+	touch $HOME/.config/autostart/Plank.desktop
 	echo -e "Preparing Plank to autostart...\n"
 	sudo tee $HOME/.config/autostart/Plank.desktop <<< "$PLANK_DESKTOP_ENTRY" | grep -v "" # Grep Used for not showing output to stdout
 	echo -e "Starting \"Plank\"\n"
