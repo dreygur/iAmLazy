@@ -107,9 +107,24 @@ function Editors() {
 }
 
 function ZSH_Shell() {
-	# Installs ZSH Shell
+	# Installs the required pakages for oh_my_zsh
 
-	# Will be added later
+	# Installs powerlevel9k theme
+	git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+	# Download and install powerline font and font configuration
+	wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
+	wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
+	# Move the symbol font to a valid X font path. Valid font paths can be listed with "xset q" 
+	mkdir -p ~/.local/share/fonts/
+	sudo mv -f PowerlineSymbols.otf ~/.local/share/fonts/
+	# Update font Cache
+	fc-cache -vf ~/.local/share/fonts/
+	# Install the fontconfig file
+	mkdir -p ~/.config/fontconfig/conf.d/
+	sudo mv -f 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
+
+	# Changing the Default shell from bash to zsh
+	chsh -s $(which zsh)
 }
 
 echo -e "Installing Basic Aplications...\n"; Basic
