@@ -1,0 +1,5 @@
+[KSharedDataCache]
+InfoOutput=4
+
+[kwalletd]
+InfoOutput=4

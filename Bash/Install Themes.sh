@@ -22,16 +22,19 @@ END='\033[0m'
 # Banner
 echo -e "$GREEN
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
-		Theme installer and autoconfig for XFCE4
-		This Package installs McOS Dark theme &
-		Flat-Remix icon pack on XFCE4
-		Also installs Plank as Bottom-Dock
+        Theme installer and autoconfig for XFCE4, Gnome
+        This Package installs McOS Dark theme &
+        Flat-Remix icon pack on XFCE4, Gnome
+        Also installs Plank as Bottom-Dock
 
-		Support for GNome, KDE, LXDE and Cinnamon
-			will be added soon... :)
-		
-		Bug report: rytotul@yahoo.com
-		Github: https://github.com/dreygur/iAmLazy 
+        Support for LXDE and Cinnamon
+            will be added soon... :)
+
+        * KDE Support is under development.
+          Use at Your own risk...
+
+        Bug report: ryeasin03@gmail.com
+        Github: https://github.com/dreygur/iAmLazy 
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 $END"
 
@@ -253,6 +256,39 @@ function gnome_config() {
 	# Set icon pack
 	# gsettings set org.gnome.desktop.interface icon-theme "Flat-Remix-Blue-Dark"
 	gsettings set org.gnome.desktop.interface icon-theme "McMojave-circle-black"
+}
+
+function kde_config() {
+	# Configuration Function for KDE
+	# Under Development
+	# Not yet stable
+
+	# KDE - Resources:
+	# https://userbase.kde.org/KDE_Connect/Tutorials/Useful_commands#Change_look_and_feel
+	# https://docs.kde.org/trunk5/en/pim/kmail2/configure-non-gui-options.html
+	# https://forum.kde.org/viewtopic.php?f=68&t=94825
+	# kwriteconfig - KDE Configuraton Tool
+	# kwriteconfig5 - For Plasma Desktop v5
+
+	# Changing General Theme Settings
+	kwriteconfig --file kdeglobals --group General --key ColorScheme "Breeze Dark" # Default
+	kwriteconfig --file kdeglobals --group General --key Name "Breeze Dark" # Default
+	kwriteconfig --file kdeglobals --group General --key widgetStyle "Breeze" # Default
+
+	# Changing Icons
+	kwriteconfig --file kdeglobals --group Icons --key Theme "breeze-dark" # Default
+
+	# Changing Walpaper
+	kwriteconfig --file plasma-desktop-appletsrc --group Containments --group 1 --group Wallpaper --group image --key wallpaper "$HOME/.backdrops/xubuntu-development.png"
+
+	# Reload dbus config for kde
+	dbus-send --dest=org.kde.kwin /KWin org.kde.KWin.reloadConfig
+
+	# Stopping Plasma to be reloaded with new look
+	kquitapp plasma-desktop
+
+	# Reloading Plasma
+	sleep 1; plasma-desktop
 }
 
 echo -e "Hello ${RED}`whoami`${END},\nHow do you feel???\n"
