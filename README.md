@@ -32,8 +32,8 @@ _So, I somehow managed to write the scripts and helped me to be lazy_
 * `bash xampp_installer.sh` install the famous XAMPP-Server on debian :smile: (Location: `Bash/xampp_installer.sh`)
 * `bash backup.sh` for backing up my installed packages on system (Location: `backup.sh`)
 * `./SMS` it has a long story. To compile: `gcc -c SMS.c -o SMS -l curl`
-* 
-
+* `Windows/Install Common Packages.cmd` Installs some common Packages for my windows machine
+* `Windows/Windows10Debloater.ps1` Script to remove Windows 10 bloatware
 
 ### Todo:
 
@@ -61,7 +61,8 @@ That's all... :relaxed:
 
 ### Acknowledgements
 
-- [Maksudur Rahman Maateen](https://github.com/maateen) - for LEMP install script
+- [Maksudur Rahman Maateen](https://github.com/maateen) - LEMP install script
+- [Richard Newton](https://github.com/Sycnex) - Windows10 Debloater
 
 ### Find me on social networks:
 - [Twitter](https://twitter.com/rytotul)
