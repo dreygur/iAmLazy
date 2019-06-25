@@ -1,5 +1,5 @@
 @echo off
-title Install Common Packages | Rakibul Yeasin
+title Install Common Packages - Rakibul Yeasin
 
 :: Package Installer for Windows
 :: It uses Chokolatey(choko) for installing
@@ -9,34 +9,36 @@ title Install Common Packages | Rakibul Yeasin
 SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
 
 :: Installing Adobe Acrobat Reader DC 2019.012.20035
-choco install adobereader
+choco install adobereader -y
 
 :: Installing Flash Player Plugin 32.0.0.207
-choco install flashplayerplugin
+choco install flashplayerplugin -y
 
 :: Installing Google Chrome 75.0.3770.100
-choco install googlechrome
+choco install googlechrome -y
 
 :: Installing Mozilla Firefox 67.0.4
-choco install firefox
+choco install firefox -y
 
 :: Installing VLC media player 3.0.7.1
-choco install vlc
+choco install vlc -y
 
 :: Installing 
-choco install winrar
+choco install winrar -y
 
 :: Installing Git 2.22.0
-choco install git
+choco install git -y
 
 :: Installing CCleaner 5.58.7209
-choco install ccleaner
+choco install ccleaner -y
 
 :: Installing Visual Studio Code 1.35.1
-choco install vscode
+choco install vscode -y
 
 :: Installing JetBrains IntelliJ IDEA (Community Edition) 2019.1.3
-choco install intellijidea-community
+choco install intellijidea-community -y
 
 :: Installing Sublime Text 3 3.2.1
-choco install sublimetext3
+choco install sublimetext3 -y
+
+pause
