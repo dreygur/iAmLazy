@@ -71,10 +71,10 @@ def themes():
 		os.makedirs(home + '/.icons') # Creates .icons directory
 
 	# Download icon theme
-	os.system('cp assets/Flat-Remix.tar.xz ~/.icons/ && tar -xf ~/.icons/Flat-Remix.tar.xz -C ~/.icons/') # Copy and extract the tarball to .icons directory
+	os.system('cp ../Assets/Flat-Remix.tar.xz ~/.icons/ && tar -xf ~/.icons/Flat-Remix.tar.xz -C ~/.icons/') # Copy and extract the tarball to .icons directory
 
 	# Download xfce4/GTK3 theme
-	os.system('cp assets/McOS.tar.gz ~/.themes/ && tar -xf ~/.themes/McOS.tar.gz -C ~/.themes/') # Copy and extract the tarbal to .themes directory
+	os.system('cp ../Assets/McOS.tar.gz ~/.themes/ && tar -xf ~/.themes/McOS.tar.gz -C ~/.themes/') # Copy and extract the tarbal to .themes directory
 
 	# Clean Current Working Directory
 	os.system('rm ~/.themes/McOS.tar.gz ~/.icons/Flat-Remix.tar.xz')
