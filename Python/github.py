@@ -14,7 +14,7 @@
 
 """
 This scipt automatically creates a repo
-in Githun.com using the given name
+in Githuব.com using the given name
 and initiazes a same git in current location
 with the upstream github url
 """
