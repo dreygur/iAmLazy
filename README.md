@@ -2,7 +2,7 @@
 <img title="Languages Used" src="https://badge.langauge.io/dreygur/iAmLazy" />
 </p>
 
-# Help me to be 'Lazy' [![Build Status](https://travis-ci.org/dreygur/iAmLazy.svg?branch=master)](https://travis-ci.org/dreygur/iAmLazy)
+# Help me to be 'Lazy' [![Build Status](https://travis-ci.org/dreygur/iAmLazy.svg?branch=master)](https://travis-ci.org/dreygur/iAmLazy) <a class="icon-twitter social-button color" href="http://twitter.com/drreygur"></a>
 
 > I am too much lazy and also love to experiment with code
 or my system. So, the system usually goes wrong and I need to
