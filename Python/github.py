@@ -5,7 +5,7 @@
 # Created: Wednesday, 22nd July 2020 9:15:37 pm
 # Author: Rakibul Yeasin (ryeasin03@gmail.com)
 # -----
-# Last Modified: Wednesday, 22nd July 2020 10:53:43 pm
+# Last Modified: Thursday, 23rd July 2020 2:12:47 pm
 # Modified By: Rakibul Yeasin (ryeasin03@gmail.com)
 # -----
 # Copyright (c) 2020 Slishee
@@ -57,4 +57,4 @@ if __name__ == "__main__":
         repo_name = sys.argv[1]
         main(repo_name)
     else:
-        print("[+] Please provide REPO name!")
+        print("[+] Please provide REPO name!\n(e.g.) github Repository")

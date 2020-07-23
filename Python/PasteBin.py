@@ -5,8 +5,10 @@
 
 # Author: Rakibul Yeasin (@dreygur)
 
+import os
 import sys
 import requests as rq
+from sys import platform
 
 def push(source):
     with open(source, "r") as inp:
@@ -38,5 +40,11 @@ def push(source):
     print(res.url)
 
 if __name__ == "__main__":
+    if platform.startswith('linux'):
+        home = os.environ['HOME']
+        bin_path = os.path.join(home, ".local", "bin")
+        if os.path.dirname(os.path.abspath(__file__)) != bin_path:
+            os.system(f"cp {__file__} {bin_path} && mv {bin_path}/{__file__} pastebin")
+
     source = sys.argv[1]
     push(source)
