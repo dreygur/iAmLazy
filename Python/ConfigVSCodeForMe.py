@@ -5,8 +5,8 @@
 # Created: Saturday, 3rd August 2019 2:38:42 pm
 # Author: Rakibul Yeasin (ryeasin03@gmail.com)
 # -----
-# Last Modified: Sunday, 29th March 2020 9:48:48 pm
-# Modified By: Shafayet Shahed Ornob (shafayetshahed@gmail.com)
+# Last Modified: Saturday, 25th July 2020 12:04:19 am
+# Modified By: Rakibul Yeasin (ryeasin03@gmail.com)
 # -----
 # Copyright (c) 2019 Slishee
 ###
@@ -31,6 +31,8 @@ company = "Slishee"
 email = "ryeasin03@gmail.com"
 
 # Function to Install the necessay plugins
+
+
 def install():
 	# Common part of the installation command
 	cmd = f'code --install-extension '
@@ -39,33 +41,34 @@ def install():
 	"""
 		Plugins
 	"""
-	c(cmd + 'ms-python.python' + f) # Python Intellisense <3
-	c(cmd + 'octref.vetur' + f) # VueJS Support inside VSCode
-	c(cmd + 'HookyQR.beautify' + f) # Install Beautify
-	c(cmd + 'ms-vscode.cpptools' + f) # Install C/C++ by Microsoft
-	c(cmd + 'dart-code.dart-code' + f) # Dart Language Support
-	c(cmd + 'dbaeumer.vscode-eslint' + f) # Javascript Linter
+	c(cmd + 'ms-python.python' + f)  # Python Intellisense <3
+	c(cmd + 'octref.vetur' + f)  # VueJS Support inside VSCode
+	c(cmd + 'HookyQR.beautify' + f)  # Install Beautify
+	c(cmd + 'ms-vscode.cpptools' + f)  # Install C/C++ by Microsoft
+	c(cmd + 'dart-code.dart-code' + f)  # Dart Language Support
+	c(cmd + 'dbaeumer.vscode-eslint' + f)  # Javascript Linter
 	# c(cmd + 'oderwat.indent-rainbow' + f) # Make Indentation awesome!
-	c(cmd + 'xabikos.javascriptsnippets' + f) # ES6 Snippest
-	c(cmd + 'ritwickdey.liveserver' + f) # Live Preview for web-designs
-	c(cmd + 'davidanson.vscode-markdownlint' + f) # Markdown Linting
-	c(cmd + 'eg2.vscode-npm-script' + f) # nmp Support from VSCode
-	c(cmd + 'felixfbecker.php-debug' + f) # PHP Debugging
-	c(cmd + 'formulahendry.terminal' + f) # VSCode Terminal
-	c(cmd + 'psioniq.psi-header' + f) # psioniq File Header
-	c(cmd + 'ritwickdey.LiveServer' + f) # Live Server
-	c(cmd + 'alexcvzz.vscode-sqlite' + f) # SQLite Browser
+	c(cmd + 'xabikos.javascriptsnippets' + f)  # ES6 Snippest
+	c(cmd + 'ritwickdey.liveserver' + f)  # Live Preview for web-designs
+	c(cmd + 'davidanson.vscode-markdownlint' + f)  # Markdown Linting
+	c(cmd + 'eg2.vscode-npm-script' + f)  # nmp Support from VSCode
+	c(cmd + 'felixfbecker.php-debug' + f)  # PHP Debugging
+	c(cmd + 'formulahendry.terminal' + f)  # VSCode Terminal
+	c(cmd + 'psioniq.psi-header' + f)  # psioniq File Header
+	c(cmd + 'ritwickdey.LiveServer' + f)  # Live Server
+	c(cmd + 'alexcvzz.vscode-sqlite' + f)  # SQLite Browser
 
 	# PyLint
 	if _platform.startswith('linux') or _platform == 'darwin':
-		c('python3 -m pip install -U pylint--user')
+		c('python3 -m pip install -U pylint --user')
 	elif _platform.startswith('win'):
-		c('python3 -m pip install -U pylint--user')
+		c('python3 -m pip install -U pylint --user')
 
 	"""
 		Themes
 	"""
-	c(cmd + 'Equinusocio.vsc-material-theme') # Material Theme
+	c(cmd + 'Equinusocio.vsc-material-theme')  # Material Theme
+
 
 def configure():
 	"""
@@ -87,7 +90,8 @@ def configure():
 			pass
 		# path = os.path.join("%APPDATA%", "Code", "User", "settings.json")
 	elif _platform == 'darwin':
-		path = os.environ['HOME'] + '/Library/Application Support/Code/User/settings.json'
+		path = os.environ['HOME'] + \
+			'/Library/Application Support/Code/User/settings.json'
 	try:
 		settings = {
 			# Editor
@@ -175,6 +179,7 @@ def configure():
 	except Exception as e:
 		print(f'There was an error.\n{e}\nPlease Try again!')
 
+
 def main():
 	"""
 		The main Function of this useless Script.
@@ -197,6 +202,7 @@ def main():
 		sys.exit(1)
 
 	sys.exit(0)
+
 
 if __name__ == '__main__':
 	main()
