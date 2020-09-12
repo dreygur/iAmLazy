@@ -17,6 +17,7 @@ echo "Downloading the Package..."
 direct=$(wget -q -O- "$link" | grep -o 'https://[^"]*' | tail -n 22 | grep -o '^https.*zip')
 wget "$direct" -O "$name"
 
+sudo rm -rf /opt/popcorntime
 sudo mkdir -p /opt/popcorntime
 # sudo tar -xf popcorntime.tar.xz -C /opt/popcorntime
 sudo unzip "$name" /opt/popcorntime
