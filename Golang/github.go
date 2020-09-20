@@ -61,7 +61,6 @@ func create(repoName string, private bool) {
 			// Creating Directory with Write-Execution Mode and changing path to that
 			os.MkdirAll(repoName, 0755)
 			os.Chdir(repoName)
-			os.MkdirAll(repoName, 0755)
 			// Initializing Empty git repo
 			out, _ := exec.Command("git", "init").Output()
 			fmt.Printf("[+] %v\n", string(out))
