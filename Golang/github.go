@@ -74,7 +74,7 @@ func create(repoName string, private bool) {
 
 func main() {
 	// Gets the repo-name
-	private := flag.Bool("p", true, "")
+	private := flag.Bool("p", false, "")
 
 	// Show Usage Info
 	flag.Usage = func() {
@@ -104,7 +104,6 @@ func main() {
 		flag.Usage()
 	} else {
 		// Creating Repo on github and a directory with that on local
-		fmt.Println(*private)
-		// create(repoName, *private)
+		create(repoName, *private)
 	}
 }
