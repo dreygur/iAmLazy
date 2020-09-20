@@ -19,8 +19,8 @@ import (
 )
 
 func create(repoName string, private bool) {
-	username := "dreygur"                               // Github Username
-	token := "1a1606d93e1b05099e893145e2199cfa098baa38" // Github Personal Auth-Token
+	username := "" // Github Username
+	token := ""    // Github Personal Auth-Token
 
 	// HTTP-Auth (base64)
 	userToken := username + ":" + token
