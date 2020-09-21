@@ -13,7 +13,6 @@ import (
 	"log"
 	"os"
 	"os/exec"
-	"strings"
 
 	"github.com/imroc/req"
 )
@@ -75,7 +74,8 @@ func create(repoName string, private bool) {
 func main() {
 	// Gets the repo-name
 	private := flag.Bool("p", false, "")
-
+	// Parse Commands
+	flag.Parse()
 	// Show Usage Info
 	flag.Usage = func() {
 		h := "Usage: Github Auto repo Creator [OPTIONS] argument ...\n\n"
@@ -84,26 +84,25 @@ func main() {
 		h += "  github [NAME] [OPTIONS]\n\n"
 
 		h += "Options:\n"
-		h += "  -p, --ungron     Is the repo private or not?\n"
-		h += "      --version    Print version information\n\n"
+		h += "  -p, --privare     Is the repo private or not?\n"
 
 		h += "Examples:\n"
 		h += "  github Test\n"
-		h += "  github Test -p\n"
+		h += "  github -p Test\n"
 
 		fmt.Fprintf(os.Stderr, h)
 	}
-	// Parse Commands
-	flag.Parse()
 
 	// RepoName
-	repoName := flag.Arg(0)
-	if repoName == "" {
-		fmt.Println("[*] Please Provide a REPO name")
-	} else if strings.HasPrefix(repoName, "-") {
-		flag.Usage()
-	} else {
+	if len(os.Args) > 2 {
+		raw := os.Args[2]
 		// Creating Repo on github and a directory with that on local
 		create(repoName, *private)
+	} else if len(os.Args) == 2 {
+		raw := os.Args[1]
+		create(repoName, *private)
+	} else {
+		flag.Usage()
 	}
+
 }
