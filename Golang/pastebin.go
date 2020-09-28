@@ -85,6 +85,6 @@ func main() {
 
 	res, err := client.Do(req)
 	c(err)
-	// The Finale Paste URL
+	// The Final Paste URL
 	fmt.Println(res.Request.URL)
 }
