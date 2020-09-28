@@ -1,9 +1,10 @@
 #!/usr/bin python3
 
 from os import environ, getcwd, mkdir, system
-from lsb_release import get_lsb_information
 from apt import Cache
 
+def get_codename():
+	return "focal"
 
 class NginX():
 
@@ -114,13 +115,6 @@ class PHP():
 		system("sudo rm -f /etc/php5/fpm/php.ini")
 		system("sudo cp " + current_working_directory +
 			   "/php/php.ini /etc/php5/fpm/php.ini")
-
-
-def get_codename():
-	# This function will get the codename of running Ubuntu
-	info = get_lsb_information()
-	return info['CODENAME']
-
 
 def get_user_choice():
 	# This function will hold the user choice

@@ -23,7 +23,6 @@ def push(source):
         "Accept-Encoding": "gzip, deflate, br",
         "Referer": "https://paste.ubuntu.com/",
         "Content-Type": "application/x-www-form-urlencoded",
-        "Content-Length": "62",
         "DNT": "1",
         "Connection": "keep-alive",
         "Upgrade-Insecure-Requests": "1"
