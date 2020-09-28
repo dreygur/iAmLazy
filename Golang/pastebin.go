@@ -4,31 +4,40 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
+	"net/http"
+	"net/url"
 	"os"
-
-	"github.com/imroc/req"
+	"strings"
+	"time"
 )
 
-func check(r error) {
+// Error Checker
+func c(r error) {
 	if r != nil {
 		log.Fatal(r)
 	}
 }
 
 func main() {
-	// File
+	// File Reader
 	if len(os.Args) < 2 {
 		fmt.Println("[-] Please provide a filename to paste...")
 		os.Exit(1)
 	}
 	file, err := ioutil.ReadFile(os.Args[1])
-	check(err)
+	c(err)
+
+	// Syntax Selection
+	var syntax string = "text"
+	if len(os.Args) >= 3 && os.Args[2] != "" {
+		syntax = os.Args[2]
+	}
 
 	// Target
-	url := "https://paste.ubuntu.com/"
+	uri := "https://paste.ubuntu.com/"
 
-	// Headers
-	headers := req.Header{
+	// Header
+	headers := map[string]string{
 		"Host":                      "paste.ubuntu.com",
 		"User-Agent":                "Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0",
 		"Accept":                    "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
@@ -41,14 +50,26 @@ func main() {
 		"Upgrade-Insecure-Requests": "1",
 	}
 
-	data := req.Param{
-		"poster":     "Rakibul Yeasin",
-		"syntax":     "python3",
-		"expiration": "",
-		"content":    string(file),
+	// Post Data
+	body := url.Values{
+		"poster":     {"Rakibul Yeasin"},
+		"syntax":     {syntax},
+		"expiration": {""},
+		"content":    {string(file)},
 	}
 
-	res, err := req.Post(url, headers, data)
-	check(err)
-	fmt.Println(res.Request().URL.String())
+	// Making Request
+	client := &http.Client{Timeout: time.Second * 3600}
+	req, err := http.NewRequest("POST", uri, strings.NewReader(body.Encode()))
+	c(err)
+
+	// Adding Headers Dynamically
+	for k, v := range headers {
+		req.Header.Add(k, v)
+	}
+
+	res, err := client.Do(req)
+	c(err)
+	// The Finale Paste URL
+	fmt.Println(res.Request.URL)
 }
