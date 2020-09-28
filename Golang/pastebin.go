@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -19,9 +20,23 @@ func c(r error) {
 }
 
 func main() {
+	// Help Message
+	flag.Usage = func() {
+		h := "Usage: Auto paster on paste.ubuntu.com [OPTIONS] argument ...\n\n"
+
+		h += "Usage:\n"
+		h += "  pastebin [NAME] [SYNTAX]\n\n"
+
+		h += "Examples:\n"
+		h += "  pastebin pastebin.go\n"
+		h += "  pastebin pastebin.go go\n\n"
+
+		fmt.Fprintf(os.Stderr, h)
+	}
+
 	// File Reader
-	if len(os.Args) < 2 {
-		fmt.Println("[-] Please provide a filename to paste...")
+	if len(os.Args) < 2 || strings.HasPrefix(os.Args[1], "-") {
+		flag.Usage()
 		os.Exit(1)
 	}
 	file, err := ioutil.ReadFile(os.Args[1])
