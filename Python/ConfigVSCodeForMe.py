@@ -5,7 +5,7 @@
 # Created: Saturday, 3rd August 2019 2:38:42 pm
 # Author: Rakibul Yeasin (ryeasin03@gmail.com)
 # -----
-# Last Modified: Saturday, 25th July 2020 12:04:19 am
+# Last Modified: Friday, 2nd October 2020 3:04:09 pm
 # Modified By: Rakibul Yeasin (ryeasin03@gmail.com)
 # -----
 # Copyright (c) 2019 Slishee
@@ -80,8 +80,8 @@ def configure():
 	if _platform.startswith('linux'):
 		path = os.environ['HOME'] + '/.config/Code/User/settings.json'
 	elif _platform.startswith('win'):
-		dir_path = r"%APPDATA%\Code\User"
-		path = r'%APPDATA%\Code\User\settings.json'
+		dir_path = os.path.join(os.getenv('APPDATA'), "Code", "User")
+		path = os.path.join(dir_path, "settings.json")
 		try:
 			os.makedirs(dir_path)
 			with open('path', "w+") as f:
@@ -151,6 +151,18 @@ def configure():
 					"prefix": " * ",
 					"end": " */",
 					"blankLinesAfter": 0
+				},
+				{
+					"language": "go",
+					"begin": "/*",
+					"prefix": " * ",
+					"end": " */",
+					"blankLinesAfter": 0,
+					"afterHeader": [
+						"\npackage main\n",
+						"import \"fmt\"\n",
+						"func main() {\n    fmt.Println(\"Hello Go!\")\n}"
+					]
 				}
 			],
 			"psi-header.templates": [
