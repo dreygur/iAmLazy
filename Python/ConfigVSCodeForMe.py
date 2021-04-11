@@ -76,22 +76,22 @@ def configure():
 		Till then this function is useless.
 		* Have a nice cup of coffee in your dream!
 	"""
+	
+	# Config File Name (Same for All Platform)
+	config_file_path = os.path.join("Code", "User")
+	config_file = "settings.json"
 
 	if _platform.startswith('linux'):
-		path = os.environ['HOME'] + '/.config/Code/User/settings.json'
+		dir_path = os.path.join(os.environ['HOME'], ".config", config_file_path)
 	elif _platform.startswith('win'):
-		dir_path = os.path.join(os.getenv('APPDATA'), "Code", "User")
-		path = os.path.join(dir_path, "settings.json")
-		try:
-			os.makedirs(dir_path)
-			with open('path', "w+") as f:
-				f.write("")
-		except:
-			pass
-		# path = os.path.join("%APPDATA%", "Code", "User", "settings.json")
+		dir_path = os.path.join(os.getenv('APPDATA'), config_file_path)
 	elif _platform == 'darwin':
-		path = os.environ['HOME'] + \
-			'/Library/Application Support/Code/User/settings.json'
+		path = os.path.join(os.environ['HOME'], "Library", "Application Support", config_file_path)
+
+	# Creating Directory
+	if not os.path.exists(path): os.makedirs(path)
+	path = os.path.join(path, config_file)
+	
 	try:
 		settings = {
 			# Editor
