@@ -89,8 +89,8 @@ def configure():
 		path = os.path.join(os.environ['HOME'], "Library", "Application Support", config_file_path)
 
 	# Creating Directory
-	if not os.path.exists(path): os.makedirs(path)
-	path = os.path.join(path, config_file)
+	if not os.path.exists(config_file_path): os.makedirs(config_file_path)
+	path = os.path.join(config_file_path, config_file)
 	
 	try:
 		settings = {
