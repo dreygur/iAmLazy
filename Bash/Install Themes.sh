@@ -34,7 +34,7 @@ echo -e "$GREEN
           Use at Your own risk...
 
         Bug report: ryeasin03@gmail.com
-        Github: https://github.com/dreygur/iAmLazy 
+        Github: https://github.com/dreygur/iAmLazy
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 $END"
 
@@ -48,11 +48,11 @@ function distro () {
 	for line in `cat /etc/*-release`; do
 		if [[ $line =~ ^(NAME|DISTRIB_ID)=(.+)$ ]]; then
 			DISTRO_STR=${BASH_REMATCH[2]}
-			if echo $DISTRO_STR | grep -q ['ubuntu','debian','mint']; then
+			if echo $DISTRO_STR | grep -qP '(?i).*(ubuntu|mint).*'; then
 				DISTRO_NAME='debian'
-			elif echo $DISTRO_STR | grep -q ['fedora']; then
+			elif echo $DISTRO_STR | grep -qP '(?i).*fedora.*'; then
 				DISTRO_NAME='fedora'
-			elif echo $DISTRO_STR | grep -q ['arch','manjaro','antergos','parabola','anarchy']; then
+			elif echo $DISTRO_STR | grep -qP '(?i)^[''"]?(arch|manjaro|antergos|chakra|magpie|parabola|anarchy).*'; then
 				DISTRO_NAME='arch'
 			fi
 			break
@@ -71,7 +71,7 @@ function distro () {
 function de () {
 	# Desktop Environment Detector
 	# Can detect 'xfce, kde, gnome and lxde'
-	
+
 	if [ "$XDG_CURRENT_DESKTOP" = "" ]; then
 		desktop=$( echo "$XDG_DATA_DIRS" | tr '[A-Z]' '[a-z]' | sed 's/.*\(xfce\|kde\|gnome\|lxde\).*/\1/' )
 	else
@@ -116,7 +116,7 @@ function themes () {
 	if [[ ! -e $HOME/.icons ]]; then
 		mkdir $HOME/.icons
 	fi
-	
+
 	if [[ ! -e $HOME/.backdrops ]]; then
 		mkdir $HOME/.backdrops
 	fi
@@ -153,7 +153,7 @@ function themes () {
 		fi
 		rm $HOME/.themes/Mc-OS-MJV-Dark-Gn3.32-V.2.1.tar.xz
 	fi
-	
+
 	# The Walpaper
 	cp $DIR/xubuntu-development.png $HOME/.backdrops
 
@@ -209,7 +209,7 @@ function xfce_config () {
 	xfconf-query -c thunar -p /last-view -s "ThunarIconView"
 	xfconf-query -c thunar -p /last-icon-view-zoom-level -s "THUNAR_ZOOM_LEVEL_NORMAL"
 	xfconf-query -c thunar -p /last-location-bar -s "ThunarLocationButtons"
-	
+
 	# Configure Desktop
 	xfconf-query -c xfce4-desktop --create -p /backdrop/screen0/monitor0/workspace0/last-image -s "/usr/share/xfce4/backdrops/xubuntu-development.png"
 	xfconf-query -c xfce4-desktop -p /desktop-icons/file-icons/show-filesystem -s "false"
@@ -229,7 +229,7 @@ function xfce_config () {
 function gnome_config() {
 	# Configuration Function for Gnome
 	# Only works for Gnome3
-	
+
 	# Installing gnome-shell
 	if [[ `distro` == 'debian' ]]; then
 		sudo apt-get install -y gnome-shell-extensions chrome-gnome-shell
@@ -238,21 +238,21 @@ function gnome_config() {
 	elif [[ `distro` == 'fedora' ]]; then
 		sudo dnf install -y gnome-shell-extensions chrome-gnome-shell
 	fi
-	
+
 	# Set the Desktop Background
 	gsettings set org.gnome.desktop.background picture-options 'centered'
 	gsettings set org.gnome.desktop.background picture-uri "$HOME/.backdrops/xubuntu-development.png"
-	
+
 	# Set Theme
 	# sudo cp $HOME/.local/share/gnome-shell/extensions/user-theme@gnome-shell-extensions.gcampax.github.com/schemas/org.gnome.shell.extensions.user-theme.gschema.xml /usr/share/glib-2.0/schemas
 	# sudo glib-compile-schemas /usr/share/glib-2.0/schemas
 	gsettings set org.gnome.shell.extensions.user-theme name "Mc-OS-MJV-Dark-Gn3.32-V.2.1"
 	gsettings set org.gnome.desktop.interface gtk-theme "Mc-OS-MJV-Dark-Gn3.32-V.2.1"
-	
+
 	# Set window manager
 	gsettings set org.gnome.desktop.wm.preferences theme "Mc-OS-MJV-Dark-Gn3.32-V.2.1"
 	gsettings set org.gnome.desktop.wm.preferences button-layout "close,minimize,maximize:" # Mac-like window manager
-	
+
 	# Set icon pack
 	# gsettings set org.gnome.desktop.interface icon-theme "Flat-Remix-Blue-Dark"
 	gsettings set org.gnome.desktop.interface icon-theme "McMojave-circle-black"

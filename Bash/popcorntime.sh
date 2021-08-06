@@ -4,38 +4,75 @@
 # For Mamun(Shanto)
 # Works on any GNU/Linux Distro
 
+distro() {
+	# Distro detector
+	# Detects Currently Installed Distribution
 
-echo "Updating..."
-sudo apt update
-echo "Configuring..."
-sudo apt install -y libcanberra-gtk-module libgconf-2-4 unzip
+	local DISTRO_NAME DISTRO_DATA DISTRO_STR
+	# Checking Current Distro
+	# cat /etc/*-release | grep "debian" #Outputs ID_LIKE=debian
+	for line in `cat /etc/*-release`; do
+		if [[ $line =~ ^(NAME|DISTRIB_ID)=(.+)$ ]]; then
+			DISTRO_STR=${BASH_REMATCH[2]}
+			if echo $DISTRO_STR | grep -qP '(?i).*(ubuntu|mint).*'; then
+				DISTRO_NAME='debian'
+			elif echo $DISTRO_STR | grep -qP '(?i).*fedora.*'; then
+				DISTRO_NAME='fedora'
+			elif echo $DISTRO_STR | grep -qP '(?i)^[''"]?(arch|manjaro|antergos|chakra|magpie|parabola|anarchy).*'; then
+				DISTRO_NAME='arch'
+			fi
+			break
+		fi
+	done
+	# plain-arch installation doesn't guarantee /etc/os-release
+	# but the filesystem pkg installs a blank /etc/arch-release
+	if [ -z "$DISTRO_NAME" ]; then
+		if [ -e /etc/arch-release ]; then
+		DISTRO_NAME='arch'
+		fi
+	fi
+	echo $DISTRO_NAME
+}
 
-name="Popcorntime.zip"
-link="https://popcorntime.app/"
+install() {
+  name="Popcorntime.tar.xz"
+  link="https://dl.popcorn-time.tw/Popcorn-Time-linux64.tar.xz"
 
-echo "Downloading the Package..."
-direct=$(wget -q -O- "$link" | grep -o 'https://[^"]*' | tail -n 22 | grep -o '^https.*zip')
-wget "$direct" -O "$name"
+  echo "Downloading the Package..."
+  # direct=$(wget -q -O- "$link" | grep -o 'https://[^"]*' | tail -n 22 | grep -o '^https.*zip')
+  wget "$link" -O "$name"
 
-sudo rm -rf /opt/popcorntime
-sudo mkdir -p /opt/popcorntime
-# sudo tar -xf popcorntime.tar.xz -C /opt/popcorntime
-sudo unzip "$name" /opt/popcorntime
+  sudo rm -rf /opt/popcorntime
+  sudo mkdir -p /opt/popcorntime
+  sudo tar -xf popcorntime.tar.xz -C /opt/popcorntime
+  # sudo unzip "$name" /opt/popcorntime
 
-sudo ln -sf /opt/popcorntime/Popcorn-Time /usr/bin/Popcorn-Time
+  sudo ln -sf /opt/popcorntime/Popcorn-Time /usr/bin/Popcorn-Time
 
-echo "Setting up Desktop Entry..."
-echo "[Desktop Entry]
-Version=1.0
-Type=Application
-Terminal=false
-Name=Popcorn Time
-Exec=/usr/bin/Popcorn-Time
-Icon=/opt/popcorntime/popcorn.png
-Categories=AudioVideo;Player;Recorder;" | sudo tee -a /usr/share/applications/popcorntime.desktop
+  echo "Setting up Desktop Entry..."
+  echo "[Desktop Entry]
+  Version=1.0
+  Type=Application
+  Terminal=false
+  Name=Popcorn Time
+  Exec=/usr/bin/Popcorn-Time
+  Icon=/opt/popcorntime/popcorn.png
+  Categories=AudioVideo;Player;Recorder;" | sudo tee -a /usr/share/applications/popcorntime.desktop
 
-sudo wget -O /opt/popcorntime/popcorn.png https://upload.wikimedia.org/wikipedia/commons/d/df/Pctlogo.png
+  sudo wget -O /opt/popcorntime/popcorn.png https://upload.wikimedia.org/wikipedia/commons/d/df/Pctlogo.png
 
-rm "$name"
+  rm "$name"
 
-echo "Done!!!"
+  echo "Done!!!"
+}
+
+echo -e "PopcornTime...\n"
+if [[ `distro` == 'debian' ]]; then
+  sudo apt-get update -y
+elif [[ `distro` == 'arch' ]]; then
+  sudo pacman -Syu --noconfirm
+elif [[ `distro` == 'fedora' ]]; then
+  sudo yum update -y
+fi
+
+install
