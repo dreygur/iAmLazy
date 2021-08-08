@@ -4,6 +4,10 @@
 # For Mamun(Shanto)
 # Works on any GNU/Linux Distro
 
+##################################################
+# Don't use it. popcorntime is dead for a while
+##################################################
+
 distro() {
 	# Distro detector
 	# Detects Currently Installed Distribution
@@ -36,16 +40,16 @@ distro() {
 
 install() {
   name="Popcorntime.tar.xz"
-  link="https://dl.popcorn-time.tw/Popcorn-Time-linux64.tar.xz"
+  link="https://get.popcorntime.app/repo/build/Popcorn-Time-0.4.5-linux64.zip"
 
   echo "Downloading the Package..."
   # direct=$(wget -q -O- "$link" | grep -o 'https://[^"]*' | tail -n 22 | grep -o '^https.*zip')
-  wget "$link" -O "$name"
+  wget -c "$link" -O "$name"
 
   sudo rm -rf /opt/popcorntime
   sudo mkdir -p /opt/popcorntime
-  sudo tar -xf popcorntime.tar.xz -C /opt/popcorntime
-  # sudo unzip "$name" /opt/popcorntime
+  # sudo tar -xf popcorntime.tar.xz -C /opt/popcorntime
+  sudo unzip "$name" /opt/popcorntime
 
   sudo ln -sf /opt/popcorntime/Popcorn-Time /usr/bin/Popcorn-Time
 
@@ -69,10 +73,13 @@ install() {
 echo -e "PopcornTime...\n"
 if [[ `distro` == 'debian' ]]; then
   sudo apt-get update -y
+  sudo apt-get install -y unzip libcanberra-gtk-module libgconf-2-4 libatomic1
 elif [[ `distro` == 'arch' ]]; then
   sudo pacman -Syu --noconfirm
+  sudo pacman -S --noconfirm unzip
 elif [[ `distro` == 'fedora' ]]; then
   sudo yum update -y
+  sudo yum install -y unzip libcanberra-gtk-module libgconf-2-4 libatomic1
 fi
 
 install
