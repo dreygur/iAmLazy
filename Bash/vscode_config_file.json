@@ -1,0 +1,117 @@
+{
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": true,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.tabCompletion": "on",
+    "editor.tabSize": 2,
+    "workbench.colorTheme": "Learn with Sumit Theme - Dracula version",
+    "workbench.startupEditor": "none",
+    "files.autoSave": "onFocusChange",
+    "files.trimTrailingWhitespace": true,
+    "jshint.options": {
+        "esversion": 6
+    },
+    "psi-header.changes-tracking": {
+        "isActive": true,
+        "modAuthor": "Modified By: ",
+        "modDate": "Last Modified: ",
+        "modDateFormat": "DD MM YYYY, h:mm:ss A",
+        "autoHeader": "manualSave"
+    },
+    "psi-header.variables": [
+        [
+            "company",
+            "Slishee"
+        ],
+        [
+            "author",
+            "Rakibul Yeasin"
+        ],
+        [
+            "authoremail",
+            "ryeasin03@gmail.com"
+        ]
+    ],
+    "psi-header.lang-config": [
+        {
+            "language": "python",
+            "begin": "###",
+            "prefix": "# ",
+            "end": "###",
+            "blankLinesAfter": 0,
+            "beforeHeader": [
+                "#!/usr/bin/env python3",
+                "# -*- coding:utf-8 -*-"
+            ]
+        },
+        {
+            "language": "shellscript",
+            "begin": "###",
+            "prefix": "# ",
+            "end": "###",
+            "blankLinesAfter": 0,
+            "beforeHeader": [
+                "#!/bin/bash"
+            ]
+        },
+        {
+            "language": "javascript",
+            "begin": "/*",
+            "prefix": " * ",
+            "end": " */",
+            "blankLinesAfter": 0
+        },
+        {
+            "language": "go",
+            "begin": "/*",
+            "prefix": " * ",
+            "end": " */",
+            "blankLinesAfter": 0,
+            "afterHeader": [
+                "\npackage main\n",
+                "import \"fmt\"\n",
+                "func main() {\n    fmt.Println(\"Hello Go!\")\n}"
+            ]
+        }
+    ],
+    "psi-header.templates": [
+        {
+            "language": "*",
+            "template": [
+                "File: <<filename>>",
+                "Created: <<filecreated('dddd, Do MMMM YYYY h:mm:ss a')>>",
+                "Author: <<author>> (<<authoremail>>)",
+                "-----",
+                "Last Modified: <<dateformat('dddd, Do MMMM YYYY h:mm:ss a')>>",
+                "Modified By: <<author>> (<<authoremail>>)",
+                "-----",
+                "Copyright (c) <<year>> <<company>>"
+            ]
+        }
+    ],
+    "editor.inlineSuggest.enabled": true,
+    "python.showStartPage": false,
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "redhat.telemetry.enabled": true,
+    "docker.showStartPage": false,
+    "github.copilot.enable": {
+        "*": false,
+        "yaml": false,
+        "plaintext": false,
+        "markdown": false
+    }
+}
