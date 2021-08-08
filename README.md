@@ -8,8 +8,10 @@
 or my system. So, the system usually goes wrong and I need to
 reinstall it. But after the installing process finishes, my job starts.
 I always have to customize and install the packages mannually.
-And it takes time from the reserved time for my sleep.  
+And it takes time from the reserved time for my sleep.
 _So, I somehow managed to write the scripts and helped me to be lazy_
+
+## Don't take it serious. It's my collection of codes that I've write for many different reasons
 
 ### Requirements:
 
