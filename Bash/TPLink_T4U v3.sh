@@ -8,12 +8,12 @@
 
 sudo pacman -Syu --noconfirm
 sudo pacman -S $(pacman -Qsq "^linux" | grep "^linux[0-9]*[-rt]*$" | awk '{print $1"-headers"}' ORS=' ')
-sudo pacman -S dkms bc
-git clone -b v5.6.1 https://github.com/fastoe/RTL8812BU.git
+sudo pacman -S dkms bc --noconfirm
+git clone -b v5.6.1 https://github.com/fastoe/RTL8812BU.git --depth 1
 cd RTL8812BU
 make
 sudo make install
 sudo modprobe 88x2bu
 cd ..
 rm -rf RTL8812BU
-sudo reboot
+# sudo reboot
