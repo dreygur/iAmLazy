@@ -1,15 +1,13 @@
-<p align="center">
-<img title="Languages Used" src="https://badge.langauge.io/dreygur/iAmLazy" />
-</p>
-
 # Help me to be 'Lazy' [![Build Status](https://travis-ci.org/dreygur/iAmLazy.svg?branch=master)](https://travis-ci.org/dreygur/iAmLazy)
 
 > I am too much lazy and also love to experiment with code
 or my system. So, the system usually goes wrong and I need to
 reinstall it. But after the installing process finishes, my job starts.
 I always have to customize and install the packages mannually.
-And it takes time from the reserved time for my sleep.  
+And it takes time from the reserved time for my sleep.
 _So, I somehow managed to write the scripts and helped me to be lazy_
+
+## Don't take it serious. It's my collection of codes that I've write for many different reasons
 
 ### Requirements:
 
@@ -32,6 +30,8 @@ _So, I somehow managed to write the scripts and helped me to be lazy_
 * `bash xampp_installer.sh` install the famous XAMPP-Server on debian :smile: (Location: `Bash/xampp_installer.sh`)
 * `bash backup.sh` for backing up my installed packages on system (Location: `backup.sh`)
 * `./SMS` it has a long story. To compile: `gcc -c SMS.c -o SMS -l curl`
+* `Windows/Install Common Packages.cmd` Installs some common Packages for my windows machine
+* `Windows/Windows10Debloater.ps1` Script to remove Windows 10 bloatware
 
 ### Todo:
 
@@ -59,4 +59,10 @@ That's all... :relaxed:
 
 ### Acknowledgements
 
-- [Maksudur Rahman Maateen](https://github.com/maateen) - for LEMP install script
+- [Maksudur Rahman Maateen](https://github.com/maateen) - LEMP install script
+- [Richard Newton](https://github.com/Sycnex) - Windows10 Debloater
+
+### Find me on social networks:
+- [Twitter](https://twitter.com/rytotul)
+- [Instagram](https://instagram.com/drreygur)
+- [Facebook](https://facebook.com/dreygur)
