@@ -5,10 +5,11 @@
 # Google AppScripts written from Lazyness stays here
 
 ```javascript
-const me = "Lazy";
-let speech = `Let me to be ${me}`;
+const url = status || `https://dreygur.js.org/iAmLAzy`
+let response = UrlFetchApp.fetch(url, option).getContentText();
+response = JSON.parse(response);
 
-conslole.log(speech);
+Logger.log(response)
 ```
 
 ### To-Do
