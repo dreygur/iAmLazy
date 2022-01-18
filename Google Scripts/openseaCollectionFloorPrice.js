@@ -28,7 +28,7 @@ const option = {
 function getFloorPrice(collection) {
   // Throw ERROR if collection is empty
   if (collection === '') {
-    return "Please Specify a collection slug/url";
+    return "Please Specify a collection slug/url.";
   }
 
   const urlChecker= /http?s:\/\//gm
@@ -48,6 +48,15 @@ function getFloorPrice(collection) {
 
   // The Floor Price
   let floorPrice = response?.stats?.floor_price;
+  
+  /*
+   * Some collections doesn't have the floor price param
+   * So they aren't for sale yet!
+   */
+  if (floorPrice === null) {
+    return "This collection isn't on sale."
+  }
+  
   return floorPrice
 }
 
@@ -64,4 +73,4 @@ function parseCollection(url) {
 }
 
 // Testing Log
-Logger.log(getFloorPrice('https://opensea.io/collection/wolf-game-farmer'))
+Logger.log(getFloorPrice('https://opensea.io/collection/the-sandbox-mega-city-land-sale-2'))
