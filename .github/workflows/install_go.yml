@@ -16,4 +16,4 @@ jobs:
     - name: Install go
       run: |
         chmod +x ./Bash/install_go.sh
-        ./Bash/install_go.sh
+        sudo ./Bash/install_go.sh
