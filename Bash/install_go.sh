@@ -1,6 +1,4 @@
 #!/bin/sh
-# Copyright 2019 the Deno authors. All rights reserved. MIT license.
-# TODO(everyone): Keep this script simple and easily auditable.
 
 set -e
 
