@@ -1,1 +1,19 @@
-# Test
+name: Install go
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: main
+    - name: Github Actions Yarn
+      uses: dreygur/github-actions-yarn@1.0.1
+    - name: Install go
+      run: |
+        chmod +x ./Bash/install_go.sh
+        ./Bash/install_go.sh
