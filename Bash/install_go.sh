@@ -12,7 +12,7 @@ fi
 VERSION=`curl https://go.dev/VERSION?m=text`
 go_uri="https://dl.google.com/go/$VERSION.linux-amd64.tar.gz" # linux
 
-go_dir="/usr/local/bin"
+go_dir="/usr/local"
 go_install="$go_dir/go"
 exe="$go_install/bin/go"
 
@@ -27,6 +27,7 @@ curl --fail --location --progress-bar --output "$go_install.tar.gz" "$go_uri"
 tar -C "$go_dir" -xzf "$go_install.tar.gz"
 chmod +x "$exe"
 rm "$go_install.tar.gz"
+ln -s "$exe" "$go_dir/bin/go"
 
 echo "Go was installed successfully to $exe"
 if command -v go >/dev/null; then
@@ -42,4 +43,3 @@ else
 	echo "Run '$exe help' to get started"
 fi
 echo
-echo "Stuck? Join our Discord https://discord.gg/deno"
