@@ -1,6 +1,6 @@
 #!/bin/env sh
 
-# Make a package list update
+# Perform a package list update
 sudo apt update -y
 
 # Install the packages
