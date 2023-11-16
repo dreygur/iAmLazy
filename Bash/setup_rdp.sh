@@ -1,5 +1,8 @@
 #!/bin/env sh
 
+# Make a package list update
+sudo apt update -y
+
 # Install the packages
 sudo apt install xrdp xserver-xorg-core xserver-xorg-input-all xorgxrdp xfce4 xfce4-goodies -y
 
