@@ -1,7 +1,3 @@
-<p align="center">
-<img title="Lazy Developer" src="https://imgur.com/download/RnpzpMh" />
-</p>
-
 # C Codes written from Lazyness stays here
 
 ```c
